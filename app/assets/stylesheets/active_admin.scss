@@ -11,25 +11,24 @@
 @import "active_admin/mixins";
 @import "active_admin/base";
 
-// Overriding any non-variable SASS must be done after the fact.
-// For example, to change the default status-tag color:
-//
-//   .status_tag { background: #6090DB; }
 #login h2{
-  color: #afb0af;
+  color: #FFF;
   background: #006400;
 }
 #login input[type="submit"] {
   background: #006400;
-  color: #afb0af;
+  color: #FFF;
 }
 #login a {
-  color: #afb0af;
+  color: #FFF;
 }
 #header {
   background: #006400;
 }
 #header h1 {
+  color: #FFF;
+}
+#header {
   color: #FFF;
 }
 #header a {

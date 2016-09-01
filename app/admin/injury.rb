@@ -14,6 +14,7 @@ ActiveAdmin.register Injury do
   filter :last_name_cont, label: 'Last Name'
   filter :start_date, label: 'Injury Start'
   filter :end_date, label: 'Injury End'
+  filter :injury_type, :as => :select, :collection => ['Sprain', 'Concussion', 'AIDS']
 
   form do |f|
     f.inputs "Admin Details" do

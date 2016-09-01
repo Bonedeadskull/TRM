@@ -8,7 +8,7 @@ ActiveAdmin.register_page "Dashboard" do
        column do
          panel "Quick Actions" do
           div do
-            link_to('New Injury', new_admin_injury_path)
+            button_to('New Injury', new_admin_injury_path, :method => :get, :id => 'new-injury-btn')
             end
           end
         end
