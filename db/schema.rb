@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160916164125) do
+ActiveRecord::Schema.define(version: 20161013213318) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -35,16 +35,14 @@ ActiveRecord::Schema.define(version: 20160916164125) do
   end
 
   create_table "injuries", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "sport"
-    t.string "status"
-    t.string "injury_location"
-    t.text   "therapy"
-    t.text   "message"
-    t.date   "date"
-    t.string "time"
+    t.integer "athlete_id"
+    t.string  "status"
+    t.string  "injury_location"
+    t.text    "comment"
+    t.date    "date"
   end
+
+  add_index "injuries", ["athlete_id"], name: "index_injuries_on_athlete_id"
 
   create_table "trainers", force: :cascade do |t|
     t.string   "first_name"
@@ -67,5 +65,17 @@ ActiveRecord::Schema.define(version: 20160916164125) do
 
   add_index "trainers", ["reset_password_token"], name: "index_trainers_on_reset_password_token", unique: true
   add_index "trainers", ["username"], name: "index_trainers_on_username", unique: true
+
+  create_table "treatments", force: :cascade do |t|
+    t.integer "athlete_id"
+    t.integer "trainer_id"
+    t.string  "treatment_location"
+    t.text    "comment"
+    t.date    "date"
+    t.string  "time"
+  end
+
+  add_index "treatments", ["athlete_id"], name: "index_treatments_on_athlete_id"
+  add_index "treatments", ["trainer_id"], name: "index_treatments_on_trainer_id"
 
 end

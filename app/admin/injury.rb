@@ -1,38 +1,29 @@
-ActiveAdmin.register Injury, as: "Treatment" do
-  menu priority: 2, label: "Treatments"
-  permit_params :first_name, :last_name, :status, :injury_location, :date, :time, :message, :therapy, :sport, :athlete
+ActiveAdmin.register Injury do
+  menu priority: 2, label: "Injuries"
+  permit_params :first_name, :last_name, :status, :injury_location, :date, :comment, :sport, :athlete_id
 
   index do
-    selectable_column
-    column :first_name
-    column :last_name
-    column :sport
-    column :status
-    column :injury_location
-    column :date
-    actions
-  end
+      selectable_column
+      column :athlete
+      column :injury_location
+      column :status
+      column :date
+      actions
+    end
 
-  filter :first_name_cont, label: 'First Name'
-  filter :last_name_cont, label: 'Last Name'
-  filter :sport, label: 'Sport', :as => :select, :collection => ['Football', 'Soccer', 'Lacross', 'Track', 'Cross Country']
-  filter :status, label: 'Player Status', :as => :select, :collection => ['Full', 'None', 'Partial']
+  filter :athlete
   filter :date, label: 'Treatment Date'
+  filter :status, label: 'Player Status', :as => :select, :collection => ['Full', 'None', 'Partial']
   filter :injury_location, :as => :select, :collection => ['Header', 'Neck', 'Shoulder', 'Back']
 
   form do |f|
-    f.inputs "Treatment Details" do
-      f.input :first_name, :required => true
-      f.input :last_name, :required => true
-      f.input :sport, :as => :select, :collection => ['Football', 'Soccer', 'Lacross', 'Track', 'Cross Country']
-      f.input :injury_location, :collection => ['Header', 'Neck', 'Shoulder', 'Back']
-      f.input :status, label: 'Player Status', :as => :select, :collection => ['Full', 'None', 'Partial'], :required => true
-      f.input :therapy, label: 'Therapy Performed'
-      f.input :message, label: 'Message to Coach'
-      f.input :date, as: :datepicker, :input_html => { :value => Date.today}
-      f.input :time, :input_html => { :value => Time.now.strftime("%I:%M %p")}
-    end
-    f.actions
-  end
-
+     f.inputs "Injury Details" do
+       f.input :athlete
+       f.input :injury_location, :collection => ['Header', 'Neck', 'Shoulder', 'Back'], include_blank: false
+       f.input :status, label: 'Player Status', :as => :select, :collection => ['Full', 'Partial', 'None'], include_blank: false
+       f.input :comment, label: 'Message to Coach'
+       f.input :date, as: :datepicker, :input_html => { :value => Date.today}
+     end
+     f.actions
+   end
 end
