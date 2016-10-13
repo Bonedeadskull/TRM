@@ -1,4 +1,5 @@
 ActiveAdmin.register Trainer do
+  menu priority: 4, label: "Trainers"
   permit_params :first_name, :last_name, :username, :email, :admin, :password, :password_confirmation
 
   actions :all
@@ -17,6 +18,10 @@ ActiveAdmin.register Trainer do
     column :first_name
     column :last_name
     actions
+  end
+
+  show do
+    attributes_table :first_name, :last_name, :email, :admin, :last_sign_in_at
   end
 
   filter :first_name_cont, label: 'First Name'

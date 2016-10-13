@@ -3,9 +3,13 @@ class CreateInjuries < ActiveRecord::Migration
     create_table :injuries do |t|
       t.string :first_name
       t.string :last_name
-      t.string :injury_type
-      t.date :start_date
-      t.date :end_date
+      t.string :sport
+      t.string :status
+      t.string :injury_location
+      t.text :therapy
+      t.text :message
+      t.date :date
+      t.string :time
     end
   end
 end

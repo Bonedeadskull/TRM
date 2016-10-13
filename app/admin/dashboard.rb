@@ -8,7 +8,7 @@ ActiveAdmin.register_page "Dashboard" do
        column do
          panel "Quick Actions" do
           div do
-            button_to('New Injury', new_admin_injury_path, :method => :get, :id => 'new-injury-btn')
+            button_to('New Treatment', new_admin_treatment_path, :method => :get, :id => 'new-injury-btn')
             end
           end
         end
@@ -16,12 +16,12 @@ ActiveAdmin.register_page "Dashboard" do
 
      columns do
        column do
-         panel "Injuries ending soon" do
-          table_for Injury.order('end_date asc').each do |injury|
+         panel "" do
+          table_for Injury.order('date desc').each do |injury|
               column(:first_name)
               column(:last_name)
-              column(:end_date)
-              column()             {|injury| link_to('View', admin_injury_path(injury)) }
+              column(:date)
+              column()             {|injury| link_to('View', admin_treatment_path(injury)) }
             end
           end
          end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160831215829) do
+ActiveRecord::Schema.define(version: 20160916164125) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -28,12 +28,22 @@ ActiveRecord::Schema.define(version: 20160831215829) do
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace"
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
 
+  create_table "athletes", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "sport"
+  end
+
   create_table "injuries", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
-    t.string "injury_type"
-    t.date   "start_date"
-    t.date   "end_date"
+    t.string "sport"
+    t.string "status"
+    t.string "injury_location"
+    t.text   "therapy"
+    t.text   "message"
+    t.date   "date"
+    t.string "time"
   end
 
   create_table "trainers", force: :cascade do |t|

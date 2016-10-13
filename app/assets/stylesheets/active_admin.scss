@@ -7,6 +7,8 @@
 // For example, to change the sidebar width:
 // $sidebar-width: 242px;
 
+$current-menu-item-background: #B5B5B5;
+$hover-menu-item-background: #B5B5B5;
 // Active Admin's got SASS!
 @import "active_admin/mixins";
 @import "active_admin/base";
@@ -28,9 +30,10 @@
 #header h1 {
   color: #FFF;
 }
-#header {
-  color: #FFF;
-}
 #header a {
   color: #FFF;
+}
+#new-injury-btn {
+  color: #FFF;
+  background: lighten(#006400, 2%);
 }
