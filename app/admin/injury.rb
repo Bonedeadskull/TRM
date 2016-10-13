@@ -1,5 +1,4 @@
 ActiveAdmin.register Injury, as: "Treatment" do
-  belongs_to :athlete
   menu priority: 2, label: "Treatments"
   permit_params :first_name, :last_name, :status, :injury_location, :date, :time, :message, :therapy, :sport, :athlete
 

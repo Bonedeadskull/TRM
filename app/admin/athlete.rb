@@ -10,16 +10,6 @@ ActiveAdmin.register Athlete do
    actions
  end
 
- show do
-   panel "Treatments" do
-     table_for athlete.injury_ids do
-       column "Date" do |injury|
-         injury.satus
-       end
-     end
-   end
- end
-
  filter :first_name_cont, label: 'First Name'
  filter :last_name_cont, label: 'Last Name'
  filter :sport, label: 'Sport', :as => :select, :collection => ['Football', 'Soccer', 'Lacross', 'Track', 'Cross Country']
