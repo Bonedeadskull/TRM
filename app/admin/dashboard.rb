@@ -17,11 +17,11 @@ ActiveAdmin.register_page "Dashboard" do
      columns do
        column do
          panel "" do
-          table_for Injury.order('date desc').each do |injury|
-              column(:first_name)
-              column(:last_name)
+          table_for Treatment.order('date desc').each do |treatment|
+              column(:athlete)
               column(:date)
-              column()             {|injury| link_to('View', admin_treatment_path(injury)) }
+              column(:treatment_location)
+              column()             {|treatment| link_to('View', admin_treatment_path(treatment)) }
             end
           end
          end

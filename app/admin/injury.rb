@@ -1,5 +1,5 @@
 ActiveAdmin.register Injury do
-  menu priority: 2, label: "Injuries"
+  menu priority: 3, label: "Injuries"
   permit_params :first_name, :last_name, :status, :injury_location, :date, :comment, :sport, :athlete_id
 
   index do

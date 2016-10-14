@@ -1,5 +1,5 @@
 ActiveAdmin.register Trainer do
-  menu priority: 4, label: "Trainers"
+  menu priority: 5, label: "Trainers"
   permit_params :first_name, :last_name, :username, :email, :admin, :password, :password_confirmation
 
   actions :all

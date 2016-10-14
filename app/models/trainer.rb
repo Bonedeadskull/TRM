@@ -15,4 +15,8 @@ class Trainer < ActiveRecord::Base
   def email_changed?
     false
   end
+
+  def to_s
+      "#{first_name}"
+  end
 end
