@@ -11,7 +11,6 @@
 #     <%= t('hello') %>
 #
 # To use a different locale, set it with `I18n.locale`:
-#
 #     I18n.locale = :es
 #
 # This would use the information in config/locales/es.yml.
