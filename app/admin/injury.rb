@@ -16,13 +16,18 @@ ActiveAdmin.register Injury do
   filter :status, label: 'Player Status', :as => :select, :collection => ['Full', 'None', 'Partial']
   filter :injury_location, :as => :select, :collection => ['Header', 'Neck', 'Shoulder', 'Back']
 
+  show do
+    attributes_table :athlete, :injury_location, :status, :date, :comment
+    active_admin_comments
+  end
+
   form do |f|
      f.inputs "Injury Details" do
        f.input :athlete
        f.input :injury_location, :collection => ['Header', 'Neck', 'Shoulder', 'Back'], include_blank: false
        f.input :status, label: 'Player Status', :as => :select, :collection => ['Full', 'Partial', 'None'], include_blank: false
-       f.input :comment, label: 'Message to Coach'
        f.input :date, as: :datepicker, :input_html => { :value => Date.today}
+       f.input :comment, label: 'Message to Coach'
      end
      f.actions
    end

@@ -22,7 +22,7 @@ ActiveAdmin.register Treatment,  { :sort_order => :date_desc }  do
       row :treatment_location
       row :comment
       row :date
-      row :times
+      row :time
     end
   end
 
