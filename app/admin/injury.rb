@@ -1,6 +1,6 @@
 ActiveAdmin.register Injury do
   menu priority: 3, label: "Injuries"
-  permit_params :first_name, :last_name, :status, :injury_location, :date, :comment, :sport, :athlete_id
+  permit_params :first_name, :last_name, :status, :injury_location, :date, :comment, :athlete_id
 
   index do
       selectable_column
