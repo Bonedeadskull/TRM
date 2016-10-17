@@ -28,7 +28,7 @@ ActiveAdmin.register Treatment,  { :sort_order => :date_desc }  do
 
   filter :athlete, label: 'Name'
   filter :date, label: 'Treatment Date'
-  filter :treatment_location, :as => :select, :collection => ['Header', 'Neck', 'Shoulder', 'Back']
+  filter :treatment_location, :as => :select, :collection => ['Abdomen','Ankle','Arm','Back','Finger','Groin','Head','Hip','Knee','Shin','Shoulder','Thigh','Toe','Wrist']
   filter :trainer, label: 'Trainer'
 
 
@@ -36,7 +36,7 @@ ActiveAdmin.register Treatment,  { :sort_order => :date_desc }  do
      f.inputs "Treatment Details" do
        f.input :athlete
        f.input :trainer, :collection => Trainer.pluck(:first_name, :id)
-       f.input :treatment_location, :collection => ['Header', 'Neck', 'Shoulder', 'Back'], include_blank: false
+       f.input :treatment_location, :collection => ['Abdomen','Ankle','Arm','Back','Finger','Groin','Head','Hip','Knee','Shin','Shoulder','Thigh','Toe','Wrist'], include_blank: false
        f.input :comment, label: 'Comments'
        f.input :date, as: :datepicker, :input_html => { :value => Date.today}
        f.input :time, :input_html => { :value => Time.now.strftime("%I:%M %p")}
