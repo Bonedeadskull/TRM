@@ -1,6 +1,15 @@
-Trainer.create!(first_name: 'Austin', last_name: 'Meier', username: 'admin', admin: 'true', email: 'admin@admin.com', password: 'password', password_confirmation: 'password')
-Athlete.create!(first_name: 'Athlete', last_name: '1', sport: 'Football')
-Athlete.create!(first_name: 'Athlete', last_name: '2', sport: 'Baseball')
-Athlete.create!(first_name: 'Athlete', last_name: '3', sport: 'Cross-Country')
-Injury.create!(injury_location: 'Knee', status: 'Full')
-Injury.create!(injury_location: 'Back', status: 'None')
+Trainer.create!([
+  {first_name: "Coach", last_name: "Harvey", username: "admin", email: "admin@admin.com", encrypted_password: "$2a$11$B5aXVbDYOvy/TwMvNeYhEOjohJgkEG/OTrsif9HHNVH3xbWXZE.Ku", admin: true, reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 2, current_sign_in_at: "2016-10-14 02:31:38", last_sign_in_at: "2016-10-13 22:12:35", current_sign_in_ip: "::1", last_sign_in_ip: "::1"},
+  {first_name: "Trainer", last_name: "McTraining", username: "trainerusername", email: "", encrypted_password: "$2a$11$LLz3.dDvFMJUcMkHupN4ZuN6LgpBUl.tgQWmZgNo///LLq3VcHExy", admin: false, reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil}
+])
+Athlete.create!([
+  {first_name: "Austin", last_name: "Meier", sport: "Football"}
+])
+Injury.create!([
+  {athlete_id: 1, status: "Full", injury_location: "Header", comment: "My Neck MY back", date: "2016-10-13"},
+  {athlete_id: 1, status: "None", injury_location: "Shoulder", comment: "", date: "2016-10-13"}
+])
+Treatment.create!([
+  {athlete_id: 1, trainer_id: 1, treatment_location: "Header", comment: "asdfasdf", date: "2016-10-13", time: "09:35 PM"},
+  {athlete_id: 1, trainer_id: 1, treatment_location: "Header", comment: "asdf", date: "2016-10-13", time: "09:51 PM"}
+])
