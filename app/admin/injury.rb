@@ -2,6 +2,13 @@ ActiveAdmin.register Injury do
   menu priority: 3, label: "Injuries"
   permit_params :first_name, :last_name, :status, :injury_location, :date, :active, :comment, :athlete_id
 
+  batch_action :Mark_Active do |ids|
+    Injury.find(ids).each do |injury|
+      injury.active='true'
+    end
+    redirect_to collection_path, alert: "The injuries have been marked active"
+  end
+
   index do
       selectable_column
       column :athlete
