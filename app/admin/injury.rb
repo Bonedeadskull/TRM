@@ -12,7 +12,7 @@ ActiveAdmin.register Injury do
     end
 
   filter :athlete
-  filter :date, label: 'Treatment Date'
+  filter :date, label: 'Injury Date'
   filter :status, label: 'Player Status', :as => :select, :collection => ['Full', 'None', 'Partial']
   filter :injury_location, :as => :select, :collection => ['Header', 'Neck', 'Shoulder', 'Back']
 

@@ -7,8 +7,8 @@
 //
 // For example, to change the sidebar width:
 // $sidebar-width: 242px;
-$primary-color: #006400 !default;
-$table-stripe-color: lighten(#5E6469, 54%) !default;
+//$primary-color: #006400 !default;
+$table-stripe-color: #F3F3F3 !default;
 $current-menu-item-background: #B5B5B5;
 $hover-menu-item-background: #B5B5B5;
 $text-color: #323537 !default;
@@ -53,4 +53,13 @@ $page-header-text-color: #cdcdcd !default;
 }
 #header h1 {
   color: #FFF;
+}
+#title_bar h2 {
+  color: #006400;
+}
+form input[type=submit], form input[type=button], form input[type=submit]:hover, form input[type=button]:hover  {
+  background-image: linear-gradient(180deg, #007F00, #006F00) !important;
+}
+.dash_buttons {
+  display: inline;
 }

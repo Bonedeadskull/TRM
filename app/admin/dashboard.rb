@@ -7,13 +7,13 @@ ActiveAdmin.register_page "Dashboard" do
      columns do
        column do
          panel "Quick Actions" do
-          span do
+          form class: 'dash_buttons' do
             button_to('New Treatment', new_admin_treatment_path, :method => :get, :id => 'new-injury-btn')
           end
-          span  do
+          form class: 'dash_buttons' do
             button_to('New Injury', new_admin_injury_path, :method => :get, :id => 'new-injury-btn')
           end
-          span do
+          form class: 'dash_buttons' do
             button_to('New Athlete', new_admin_athlete_path, :method => :get, :id => 'new-injury-btn')
           end
          end
