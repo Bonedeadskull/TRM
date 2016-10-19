@@ -21,7 +21,7 @@ $blank-slate-primary-color: #AAA !default;
 $breadcrumbs-color: #8a949e !default;
 $breadcrumbs-separator-color: #aab2ba !default;
 $required-field-marker-color: #aaa !default;
-$form-label-color: $section-header-text-color !default;
+$div-label-color: $section-header-text-color !default;
 $page-header-text-color: #cdcdcd !default;
 
 
@@ -57,9 +57,9 @@ $page-header-text-color: #cdcdcd !default;
 #title_bar h2 {
   color: #006400;
 }
-form input[type=submit], form input[type=button], form input[type=submit]:hover, form input[type=button]:hover  {
+div input[type=submit], div input[type=button], div input[type=submit]:hover, div input[type=button]:hover  {
   background-image: linear-gradient(180deg, #007F00, #006F00) !important;
 }
-.dash_buttons {
+form.button_to, div.dash_buttons {
   display: inline;
 }

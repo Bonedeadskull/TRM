@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20161013213318) do
   create_table "injuries", force: :cascade do |t|
     t.integer "athlete_id"
     t.string  "status"
+    t.boolean "active"
     t.string  "injury_location"
     t.text    "comment"
     t.date    "date"

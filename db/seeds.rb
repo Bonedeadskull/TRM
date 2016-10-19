@@ -1,6 +1,5 @@
 Trainer.create!([
-  {first_name: "Coach", last_name: "Harvey", username: "admin", email: "admin@admin.com", encrypted_password: "$2a$11$B5aXVbDYOvy/TwMvNeYhEOjohJgkEG/OTrsif9HHNVH3xbWXZE.Ku", admin: true, reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 2, current_sign_in_at: "2016-10-14 02:31:38", last_sign_in_at: "2016-10-13 22:12:35", current_sign_in_ip: "::1", last_sign_in_ip: "::1"},
-  {first_name: "Trainer", last_name: "McTraining", username: "trainerusername", email: "", encrypted_password: "$2a$11$LLz3.dDvFMJUcMkHupN4ZuN6LgpBUl.tgQWmZgNo///LLq3VcHExy", admin: false, reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil}
+  {first_name: "Coach", last_name: "Harvey", username: "admin", email: "admin@admin.com", password: 'password', encrypted_password: "$2a$11$B5aXVbDYOvy/TwMvNeYhEOjohJgkEG/OTrsif9HHNVH3xbWXZE.Ku", admin: true, reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 2, current_sign_in_at: "2016-10-14 02:31:38", last_sign_in_at: "2016-10-13 22:12:35", current_sign_in_ip: "::1", last_sign_in_ip: "::1"},
 ])
 Athlete.create!([
   {first_name: "Austin", last_name: "Meier", sport: "Football"}

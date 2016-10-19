@@ -7,13 +7,13 @@ ActiveAdmin.register_page "Dashboard" do
      columns do
        column do
          panel "Quick Actions" do
-          form class: 'dash_buttons' do
+          div class: 'dash_buttons' do
             button_to('New Treatment', new_admin_treatment_path, :method => :get, :id => 'new-injury-btn')
           end
-          form class: 'dash_buttons' do
+          div class: 'dash_buttons' do
             button_to('New Injury', new_admin_injury_path, :method => :get, :id => 'new-injury-btn')
           end
-          form class: 'dash_buttons' do
+          div class: 'dash_buttons' do
             button_to('New Athlete', new_admin_athlete_path, :method => :get, :id => 'new-injury-btn')
           end
          end
@@ -22,12 +22,13 @@ ActiveAdmin.register_page "Dashboard" do
 
      columns do
        column do
-         panel "" do
-          table_for Treatment.order('date desc').each do |treatment|
+         panel "Injured Athletes" do
+          table_for Injury.where(:active =>  true).order("date desc").each do |injury|
               column(:athlete)
               column(:date)
-              column(:treatment_location)
-              column()             {|treatment| link_to('View', admin_treatment_path(treatment)) }
+              column(:injury_location)
+              column(:active)
+              column()             {|injury| link_to('View', admin_injury_path(injury)) }
             end
           end
          end

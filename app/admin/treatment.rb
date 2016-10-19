@@ -35,7 +35,7 @@ ActiveAdmin.register Treatment,  { :sort_order => :date_desc }  do
   form do |f|
      f.inputs "Treatment Details" do
        f.input :athlete
-       f.input :trainer, :collection => Trainer.pluck(:first_name, :id)
+       f.input :trainer, :collection => Hash[Trainer.all.map{|t| [t.first_name + ' ' + t.last_name,t.id]}]
        f.input :treatment_location, :collection => ['Abdomen','Ankle','Arm','Back','Finger','Groin','Head','Hip','Knee','Shin','Shoulder','Thigh','Toe','Wrist'], include_blank: false
        f.input :comment, label: 'Comments'
        f.input :date, as: :datepicker, :input_html => { :value => Date.today}
