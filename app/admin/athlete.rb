@@ -41,13 +41,13 @@ ActiveAdmin.register Athlete do
 
    filter :first_name_cont, label: 'First Name'
    filter :last_name_cont, label: 'Last Name'
-   filter :sport, label: 'Sport', :as => :select, :collection => ['Football', 'Soccer', 'Lacrosse', 'Track', 'Cross Country']
+   filter :sport, label: 'Sport', :as => :select, :collection => ['Football', 'Soccer','Swimming','Tennis','Baseball','Basketball','Softball', 'Wrestling', 'Lacrosse', 'Track', 'Cross Country', 'Volleyball']
 
    form do |f|
      f.inputs "Treatment Details" do
        f.input :first_name, :required => true
        f.input :last_name, :required => true
-       f.input :sport, :as => :tags, :collection => ['Football', 'Soccer', 'Lacrosse', 'Track', 'Cross Country']
+       f.input :sport, :as => :tags, :collection => ['Football', 'Soccer','Swimming','Tennis','Baseball','Basketball','Softball', 'Wrestling', 'Lacrosse', 'Track', 'Cross Country', 'Volleyball']
      end
      f.actions
    end
