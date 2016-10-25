@@ -25,9 +25,10 @@ ActiveAdmin.register_page "Dashboard" do
          panel "Injured Athletes" do
           table_for Injury.where(:active =>  true).order("date desc").each do |injury|
               column(:athlete)
+              column('Sport') { |injury| injury.athlete.sport }
               column(:date)
               column(:injury_location)
-              column(:active)
+              column(:status)
               column()             {|injury| link_to('View', admin_injury_path(injury)) }
             end
           end

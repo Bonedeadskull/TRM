@@ -7,7 +7,6 @@
 //
 // For example, to change the sidebar width:
 // $sidebar-width: 242px;
-//$primary-color: #006400 !default;
 $table-stripe-color: #F3F3F3 !default;
 $current-menu-item-background: #B5B5B5;
 $hover-menu-item-background: #B5B5B5;
@@ -22,7 +21,7 @@ $breadcrumbs-color: #8a949e !default;
 $breadcrumbs-separator-color: #aab2ba !default;
 $required-field-marker-color: #aaa !default;
 $div-label-color: $section-header-text-color !default;
-$page-header-text-color: #cdcdcd !default;
+$page-header-text-color: #FFF !default;
 
 
 
@@ -47,12 +46,6 @@ $page-header-text-color: #cdcdcd !default;
 }
 #header {
   background: #006400;
-}
-#header a {
-  color: #FFF;
-}
-#header h1 {
-  color: #FFF;
 }
 #title_bar h2 {
   color: #006400;
