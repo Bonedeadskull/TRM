@@ -1,6 +1,6 @@
 ActiveAdmin.register Injury do
-  config.sort_order = "date_desc"
   menu priority: 3, label: "Injuries"
+  config.sort_order = ""
   permit_params :first_name, :last_name, :status, :injury_location, :date, :active, :comment, :athlete_id, :injury_id
 
   batch_action :Mark_Active do |ids|
@@ -13,12 +13,20 @@ ActiveAdmin.register Injury do
 
   index do
       selectable_column
-      column :athlete
+      column :athlete_id, :sortable => 'athletes.last_name' do |injury|
+        injury.athlete.first_name + " " + injury.athlete.last_name
+      end
       column :injury_location
       column :status
       column :date
       column :active
       actions
+    end
+
+    controller do
+      def scoped_collection
+        end_of_association_chain.includes(:athlete).order('athletes.last_name asc')
+      end
     end
 
   filter :athlete
