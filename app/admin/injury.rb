@@ -1,11 +1,12 @@
 ActiveAdmin.register Injury do
   config.sort_order = "date_desc"
   menu priority: 3, label: "Injuries"
-  permit_params :first_name, :last_name, :status, :injury_location, :date, :active, :comment, :athlete_id
+  permit_params :first_name, :last_name, :status, :injury_location, :date, :active, :comment, :athlete_id, :injury_id
 
   batch_action :Mark_Active do |ids|
     Injury.find(ids).each do |injury|
-      injury.active = 'true'
+      injury.active = !injury.active
+      injury.save
     end
     redirect_to collection_path, alert: "The injuries have been marked active"
   end
