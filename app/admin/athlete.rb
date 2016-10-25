@@ -12,28 +12,36 @@ ActiveAdmin.register Athlete do
 
    show do
      attributes_table :first_name, :last_name, :sport
-     panel "Injuries" do
-       table_for athlete.injuries do
-         column :date
-         column :injury_location
-         column :status
-         column :comment
-         column do |injury|
-            link_to('View', admin_injury_path(injury))
-         end
-       end
+     panel "Quick Actions" do
+      div class: 'dash_buttons' do
+        button_to('New Treatment', new_admin_treatment_path, :method => :get, :id => 'new-injury-btn')
+      end
+      div class: 'dash_buttons' do
+        button_to('New Injury', new_admin_injury_path, :method => :get, :id => 'new-injury-btn')
+      end
      end
      panel "Treatments" do
        table_for athlete.treatments do
          column :date
+         column('View') do |treatment|
+            link_to('View', admin_treatment_path(treatment))
+         end
          column :treatment_location
          column :comment
          column 'Trainer' do |treatment|
            treatment.trainer.first_name + ' ' + treatment.trainer.last_name
          end
-         column do |treatment|
-            link_to('View', admin_treatment_path(treatment))
+       end
+     end
+     panel "Injuries" do
+       table_for athlete.injuries do
+         column :date
+         column('View') do |injury|
+            link_to('View', admin_injury_path(injury))
          end
+         column :injury_location
+         column :status
+         column :comment
        end
      end
      active_admin_comments

@@ -3,18 +3,25 @@ ActiveAdmin.register Injury do
   config.sort_order = ""
   permit_params :first_name, :last_name, :status, :injury_location, :date, :active, :comment, :athlete_id, :injury_id
 
-  batch_action :Mark_Active do |ids|
+  batch_action :Mark_Inactive do |ids|
     Injury.find(ids).each do |injury|
-      injury.active = !injury.active
+      injury.active = false
       injury.save
     end
-    redirect_to collection_path, alert: "The injuries have been marked active"
+    redirect_to collection_path, alert: "The injuries have been marked Inactive"
+  end
+  batch_action :Mark_Active do |ids|
+    Injury.find(ids).each do |injury|
+      injury.active = true
+      injury.save
+    end
+    redirect_to collection_path, alert: "The injuries have been marked Active"
   end
 
   index do
       selectable_column
       column :athlete_id, :sortable => 'athletes.last_name' do |injury|
-        injury.athlete.first_name + " " + injury.athlete.last_name
+        injury.athlete.last_name + ", " + injury.athlete.first_name
       end
       column :injury_location
       column :status
