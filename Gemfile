@@ -5,6 +5,7 @@ gem 'sqlite3'
 gem 'sass-rails', '~> 5.0'
 gem 'activeadmin', '~> 1.0.0.pre4'
 gem 'activeadmin_addons'
+gem "active_admin_import" , '3.0.0.pre'
 gem 'devise'
 gem 'seed_dump'
 # Use Uglifier as compressor for JavaScript assets

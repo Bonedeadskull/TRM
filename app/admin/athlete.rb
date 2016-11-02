@@ -1,7 +1,8 @@
 ActiveAdmin.register Athlete do
   menu priority: 4, label: "Athletes"
-   permit_params :first_name, :last_name, :sport
-
+  permit_params :first_name, :last_name, :sport
+  active_admin_import
+  
    index do
      selectable_column
      column :first_name
@@ -21,7 +22,7 @@ ActiveAdmin.register Athlete do
       end
      end
      panel "Treatments" do
-       table_for athlete.treatments do
+       table_for athlete.treatments.order("date desc") do |treatment|
          column :date
          column('View') do |treatment|
             link_to('View', admin_treatment_path(treatment))
@@ -34,8 +35,8 @@ ActiveAdmin.register Athlete do
        end
      end
      panel "Injuries" do
-       table_for athlete.injuries do
-         column :date
+       table_for athlete.injuries.order("date desc") do |injury|
+         column(:date)
          column('View') do |injury|
             link_to('View', admin_injury_path(injury))
          end
