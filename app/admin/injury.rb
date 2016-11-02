@@ -1,16 +1,15 @@
 ActiveAdmin.register Injury do
   menu priority: 3, label: "Injuries"
-    config.sort_order = "athletes.last_name"
   permit_params :first_name, :last_name, :status, :injury_location, :date, :active, :comment, :athlete_id, :injury_id
 
   scope 'All', :all, default: true do
-      Injury.all.order("athlete_id.last_name asc")
+      Injury.all.joins(:athlete).order("last_name asc")
   end
   scope 'Active', :all, default: false do
-      Injury.where(:active =>  true)
+      Injury.where(:active =>  true).joins(:athlete).order("last_name asc")
   end
   scope 'Inactive', :all, default: false do
-      Injury.where(:active =>  false)
+      Injury.where(:active =>  false).joins(:athlete).order("last_name asc")
   end
 
 
