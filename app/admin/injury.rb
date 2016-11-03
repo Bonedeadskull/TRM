@@ -1,22 +1,20 @@
 ActiveAdmin.register Injury do
-  menu priority: 3, label: "Injuries"
-  permit_params :first_name, :last_name, :status, :injury_location, :date, :active, :comment, :athlete_id, :injury_id
+   menu priority: 3, label: "Injuries"
+   config.sort_order = "athletes.last_name asc"
+   permit_params :first_name, :last_name, :status, :injury_location, :date, :active, :comment, :athlete_id, :injury_id
 
-  scope 'All', :all, default: true do
-      Injury.all.joins(:athlete).order("last_name asc")
-  end
-  scope 'Active', :all, default: false do
-      Injury.where(:active =>  true).joins(:athlete).order("last_name asc")
-  end
-  scope 'Inactive', :all, default: false do
-      Injury.where(:active =>  false).joins(:athlete).order("last_name asc")
-  end
-
-
-  batch_action :Mark_Inactive do |ids|
-    Injury.find(ids).each do |injury|
-      injury.active = false
-      injury.save
+   controller do
+     before_filter only: :index do
+       if params[:commit].blank? && params[:q].blank?
+         extra_params = {"q" => {"active_eq" => "true"}}
+         params.merge! extra_params
+       end
+     end
+   end
+   batch_action :Mark_Inactive do |ids|
+     Injury.find(ids).each do |injury|
+       injury.active = false
+       injury.save
     end
     redirect_to collection_path, alert: "The injuries have been marked Inactive"
   end
@@ -53,7 +51,7 @@ ActiveAdmin.register Injury do
   filter :injury_location, :as => :select, :collection => ['Abdomen','Ankle','Arm','Back','Finger','Groin','Head','Hip','Knee','Shin','Shoulder','Thigh','Toe','Wrist']
 
   show do
-    attributes_table :id, :athlete, :injury_location, :active, :status, :date, :comment
+    attributes_table :athlete, :injury_location, :active, :status, :date, :comment
     active_admin_comments
   end
 
