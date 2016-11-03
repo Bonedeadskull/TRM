@@ -1,8 +1,8 @@
 ActiveAdmin.register Athlete do
   menu priority: 4, label: "Athletes"
-  permit_params :first_name, :last_name, :sport
+  permit_params :first_name, :last_name, :sport, :id
   active_admin_import
-  
+
    index do
      selectable_column
      column :first_name
@@ -15,10 +15,10 @@ ActiveAdmin.register Athlete do
      attributes_table :first_name, :last_name, :sport
      panel "Quick Actions" do
       div class: 'dash_buttons' do
-        button_to('New Treatment', new_admin_treatment_path, :method => :get, :id => 'new-injury-btn')
+        link_to('New Treatment', new_admin_treatment_path(:treatment => { :athlete_id => athlete.id}),{ class:"btn-athlete"})
       end
       div class: 'dash_buttons' do
-        button_to('New Injury', new_admin_injury_path, :method => :get, :id => 'new-injury-btn')
+        link_to('New Injury', new_admin_injury_path(:injury => { :athlete_id => athlete.id}),{ class:"btn-athlete"})
       end
      end
      panel "Treatments" do

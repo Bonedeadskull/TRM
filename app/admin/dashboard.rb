@@ -33,7 +33,7 @@ ActiveAdmin.register_page "Dashboard" do
             column('Injury Location') do |injury|
               injury.injury_location
             end
-            column()                  {|injury| link_to('Treat', new_admin_treatment_path) }
+            column()                  {|injury| link_to('Treat', new_admin_treatment_path(:treatment => { :athlete_id => injury.athlete, :treatment_location => injury.injury_location})) }
             column(:date)
             column('Sport')           {|injury| injury.athlete.sport }
             column()                  {|injury| link_to('View', admin_injury_path(injury)) }
