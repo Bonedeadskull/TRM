@@ -1,12 +1,12 @@
-ActiveAdmin.register Athlete do
+ActiveAdmin.register Athlete,  { :sort_order => :last_name_asc } do
   menu priority: 4, label: "Athletes"
   permit_params :first_name, :last_name, :sport, :id
   active_admin_import
 
    index do
      selectable_column
-     column :first_name
      column :last_name
+     column :first_name
      column :sport
      actions
    end
@@ -22,7 +22,7 @@ ActiveAdmin.register Athlete do
       end
      end
      panel "Treatments" do
-       table_for athlete.treatments.order("date desc") do |treatment|
+       table_for athlete.treatments.order("time desc") do |treatment|
          column :date
          column('View') do |treatment|
             link_to('View', admin_treatment_path(treatment))

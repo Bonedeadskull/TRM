@@ -52,13 +52,22 @@ ActiveAdmin.register Injury do
 
   show do
     attributes_table :athlete, :injury_location, :active, :status, :date, :comment
+    columns do
+      column do
+        panel "Quick Actions" do
+         div class: 'dash_buttons' do
+           link_to('New Treatment', new_admin_treatment_path(:treatment => { :athlete_id => injury.athlete_id, :treatment_location => injury.injury_location}),{ class:"btn-athlete"})
+         end
+        end
+       end
+     end
     active_admin_comments
   end
 
   form do |f|
      f.inputs "Injury Details" do
        f.input :athlete
-       f.input :injury_location, :collection => ['Abdomen','Ankle','Arm','Back','Finger','Groin','Head','Hip','Knee','Shin','Shoulder','Thigh','Toe','Wrist'], include_blank: false
+       f.input :injury_location, :collection => ['Abdomen','Ankle','Arm','Back','Finger','Groin','Head','Hip','Knee','Shin','Shoulder','Thigh','Toe','Wrist'], include_blank: true
        f.input :active, :as => :boolean, label: 'Injury Active', :input_html => { :checked => 'true'}
        f.input :status, label: 'Player Status', :as => :select, :collection => ['Hold', 'Limit', 'Full'], include_blank: false
        f.input :date, as: :datepicker, :input_html => { :value => Date.today}

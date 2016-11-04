@@ -16,7 +16,7 @@ Injury.create!([
   {athlete_id: 3, status: "Hold", active: false, injury_location: "Back", comment: "", date: "2016-09-13"},
   {athlete_id: 5, status: "Hold", active: true, injury_location: "Back", comment: "", date: "2016-10-18"},
   {athlete_id: 3, status: "Hold", active: true, injury_location: "Shoulder", comment: "no pads", date: "2016-10-25"},
-  {athlete_id: 6, status: "Limit", active: false, injury_location: "Arm", comment: "", date: "2016-10-14"},
+  {athlete_id: 4, status: "Limit", active: false, injury_location: "Arm", comment: "", date: "2016-10-14"},
   {athlete_id: 5, status: "Hold", active: false, injury_location: "Abdomen", comment: "", date: "2016-10-01"},
   {athlete_id: 2, status: "Full", active: true, injury_location: "Ankle", comment: "Broken Ankles", date: "2016-10-16"},
   {athlete_id: 5, status: "Full", active: false, injury_location: "Back", comment: "", date: "2016-08-09"},
@@ -26,10 +26,7 @@ Treatment.create!([
   {athlete_id: 5, trainer_id: 4, treatment_location: "Abdomen", comment: "Wrap", date: "2016-10-01", time: "12:46 PM"},
   {athlete_id: 5, trainer_id: 5, treatment_location: "Abdomen", comment: "Wrap", date: "2016-10-02", time: "12:47 PM"},
   {athlete_id: 1, trainer_id: 1, treatment_location: "Abdomen", comment: "Ice", date: "2016-10-24", time: "12:48 PM"},
-  {athlete_id: 6, trainer_id: 4, treatment_location: "Abdomen", comment: "Ice Wrap", date: "2016-10-14", time: "12:49 PM"},
-  {athlete_id: 6, trainer_id: 1, treatment_location: "Arm", comment: "Splint", date: "2016-10-15", time: "12:50 PM"},
+  {athlete_id: 1, trainer_id: 4, treatment_location: "Abdomen", comment: "Ice Wrap", date: "2016-10-14", time: "12:49 PM"},
+  {athlete_id: 1, trainer_id: 1, treatment_location: "Arm", comment: "Splint", date: "2016-10-15", time: "12:50 PM"},
   {athlete_id: 3, trainer_id: 1, treatment_location: "Shoulder", comment: "Ice Pack", date: "2016-10-25", time: "01:05 PM"}
-])
-ActiveAdmin::Comment.create!([
-  {namespace: "admin", body: "3rd", resource_id: "4", resource_type: "Athlete", author_id: 1, author_type: "Trainer"}
 ])

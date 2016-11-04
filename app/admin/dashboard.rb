@@ -25,8 +25,8 @@ ActiveAdmin.register_page "Dashboard" do
      columns do
        column do
          panel "Injured Athletes" do
-          table_for Injury.where(:active =>  true).order("date desc").each do |injury|
-            column :athlete_id, :sortable => 'athletes.last_name' do |injury|
+          table_for Injury.where(:active =>  true).joins(:athlete).order("last_name asc").each do |injury|
+            column :athlete_id do |injury|
               link_to(injury.athlete.last_name + ", " + injury.athlete.first_name, admin_athlete_path(injury.athlete))
             end
             column(:status)

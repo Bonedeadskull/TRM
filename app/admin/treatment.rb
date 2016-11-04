@@ -4,7 +4,9 @@ ActiveAdmin.register Treatment,  { :sort_order => :date_desc }  do
 
   index do
     selectable_column
-    column :athlete
+    column :athlete_id, :sortable => 'athletes.last_name' do |injury|
+      injury.athlete.last_name + ", " + injury.athlete.first_name
+    end
     column :date
     column :treatment_location
     column 'Trainer' do |treatment|
@@ -26,17 +28,23 @@ ActiveAdmin.register Treatment,  { :sort_order => :date_desc }  do
     end
   end
 
+  controller do
+    def scoped_collection
+      end_of_association_chain.includes(:athlete)
+    end
+  end
+
   filter :athlete, label: 'Name'
   filter :date, label: 'Treatment Date'
-  filter :treatment_location, :as => :select, :collection => ['Abdomen','Ankle','Arm','Back','Finger','Groin','Head','Hip','Knee','Shin','Shoulder','Thigh','Toe','Wrist']
+  filter :treatment_location, :as => :select, :collection => ['Abdomen','Ankle','Arm','Back','Finger','Groin','Head','Hip','Knee','Shin','Shoulder','Thigh','Toe','Wrist','Other']
   filter :trainer, label: 'Trainer'
 
 
   form do |f|
      f.inputs "Treatment Details" do
        f.input :athlete
-       f.input :trainer, :collection => Hash[Trainer.all.map{|t| [t.first_name + ' ' + t.last_name,t.id]}]
-       f.input :treatment_location, :collection => ['Abdomen','Ankle','Arm','Back','Finger','Groin','Head','Hip','Knee','Shin','Shoulder','Thigh','Toe','Wrist'], include_blank: true
+       f.input :trainer, :collection => Hash[Trainer.all.map{|t| [t.last_name + ', ' + t.first_name,t.id]}]
+       f.input :treatment_location, :collection => ['Abdomen','Ankle','Arm','Back','Finger','Groin','Head','Hip','Knee','Shin','Shoulder','Thigh','Toe','Wrist','Other'], include_blank: true
        f.input :comment, label: 'Comments'
        f.input :date, as: :datepicker, :input_html => { :value => Date.today}
        f.input :time, :input_html => { :value => Time.now.strftime("%I:%M %p")}
