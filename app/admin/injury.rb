@@ -4,6 +4,33 @@ ActiveAdmin.register Injury do
    permit_params :first_name, :last_name, :status, :injury_location, :date, :active, :comment, :athlete_id, :injury_id
 
    controller do
+       def index
+         respond_to do |format|
+           format.html { super }
+           format.csv  { super }
+           format.xml  { super }
+           format.json { super }
+
+           format.pdf do
+             @injuries = Injury.where(:active => true).joins(:athlete).order("last_name asc")
+             render pdf: 'injury', layout: 'pdf', template: 'admin/injuries/index_pdf.html.erb'
+           end
+         end
+       end
+     end
+
+   actions :all
+   controller do
+     def action_methods
+       if current_trainer.admin?
+         super - ['']
+       else
+         super - ['destroy']
+       end
+     end
+   end
+
+   controller do
      before_filter only: :index do
        if params[:commit].blank? && params[:q].blank?
          extra_params = {"q" => {"active_eq" => "true"}}
@@ -26,7 +53,7 @@ ActiveAdmin.register Injury do
     redirect_to collection_path, alert: "The injuries have been marked Active"
   end
 
-  index do
+  index download_links: [:csv, :xml, :json] do
       selectable_column
       column :athlete_id, :sortable => 'athletes.last_name' do |injury|
         injury.athlete.last_name + ", " + injury.athlete.first_name

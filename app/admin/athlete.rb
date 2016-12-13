@@ -3,6 +3,17 @@ ActiveAdmin.register Athlete,  { :sort_order => :last_name_asc } do
   permit_params :first_name, :last_name, :sport, :id
   active_admin_import
 
+  actions :all
+  controller do
+    def action_methods
+      if current_trainer.admin?
+        super - ['']
+      else
+        super - ['destroy']
+      end
+    end
+  end
+
    index do
      selectable_column
      column :last_name
@@ -15,7 +26,12 @@ ActiveAdmin.register Athlete,  { :sort_order => :last_name_asc } do
      attributes_table :first_name, :last_name, :sport
      panel "Quick Actions" do
       div class: 'dash_buttons' do
-        link_to('New Treatment', new_admin_treatment_path(:treatment => { :athlete_id => athlete.id}),{ class:"btn-athlete"})
+        if(Injury.where(:athlete_id => athlete.id, :active =>  true).exists?)
+          link_to('New Treatment', new_admin_treatment_path(:treatment => { :athlete_id => athlete.id, :treatment_location => Injury.where(:athlete_id => athlete.id, :active =>  true).order("date desc").first.injury_location }),{ class:"btn-athlete"})
+        else
+          link_to('New Treatment', new_admin_treatment_path(:treatment => { :athlete_id => athlete.id}),{ class:"btn-athlete"})
+
+        end
       end
       div class: 'dash_buttons' do
         link_to('New Injury', new_admin_injury_path(:injury => { :athlete_id => athlete.id}),{ class:"btn-athlete"})

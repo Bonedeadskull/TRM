@@ -18,6 +18,9 @@ ActiveAdmin.register_page "Dashboard" do
           div class: 'dash_buttons' do
             button_to('New Injury', new_admin_injury_path, :method => :get, :id => 'new-injury-btn')
           end
+          div class: 'dash_buttons' do
+            button_to('Coaches Report', "/admin/injuries.pdf", :method => :get, :id => 'new-injury-btn')
+          end
          end
         end
       end
@@ -33,7 +36,7 @@ ActiveAdmin.register_page "Dashboard" do
             column('Injury Location') do |injury|
               injury.injury_location
             end
-            column()                  {|injury| link_to('Treat', new_admin_treatment_path(:treatment => { :athlete_id => injury.athlete, :treatment_location => injury.injury_location})) }
+            column()                  {|injury| link_to('Treat', new_admin_treatment_path(:treatment => { :athlete_id => injury.athlete, :trainer_id => current_trainer, :treatment_location => injury.injury_location})) }
             column(:date)
             column('Sport')           {|injury| injury.athlete.sport }
             column()                  {|injury| link_to('View', admin_injury_path(injury)) }

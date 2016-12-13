@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  </head>
+
+  <body>
+    <h2 style="padding-bottom: 5px;"><center>Coaches Report</center></h2>
+    <h4 style="padding-bottom: 25px"><center><%= Time.now.strftime("%m/%d/%Y %I:%M %p") %></center></h4>
+    <%= yield %>
+  </body>
+</html>

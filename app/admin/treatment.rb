@@ -2,6 +2,17 @@ ActiveAdmin.register Treatment,  { :sort_order => :date_desc }  do
   permit_params :athlete_id, :trainer_id, :treatment_location, :comment, :date, :time
   menu priority: 2, label: "Treatments"
 
+  actions :all
+  controller do
+    def action_methods
+      if current_trainer.admin?
+        super - ['']
+      else
+        super - ['destroy']
+      end
+    end
+  end
+
   index do
     selectable_column
     column :athlete_id, :sortable => 'athletes.last_name' do |injury|

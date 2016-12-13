@@ -1,0 +1,36 @@
+<style>
+#injuries {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  margin: 0 auto;
+  border-collapse: collapse;
+  width: 100%;
+}
+th {
+  border-bottom: 1px solid #ddd;
+}
+td {
+  font-size: 10px;
+  padding: 5px;
+  text-align: left;
+}
+tr:nth-child(even) {background-color: #f2f2f2}
+</style>
+
+<div style="overflow-x:auto;">
+<table id="injuries">
+  <tr>
+    <th><b>Athlete</b></td>
+    <th><b>Sport</b></td>
+    <th><b>Status</b></td>
+    <th><b>Comments</b></td>
+  </tr>
+  <% @injuries.each do |injury| %>
+    <tr>
+      <td><%= injury.athlete.last_name %>, <%= injury.athlete.first_name %></td>
+      <td><%= injury.athlete.sport %></td>
+      <td><%= injury.status %></td>
+      <td><%= injury.comment %></td>
+    </tr>
+  <% end %>
+</table>
+</div>

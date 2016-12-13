@@ -6,7 +6,7 @@ ActiveAdmin.register Trainer do
   controller do
     def action_methods
       if current_trainer.admin?
-        super
+        super - ['view']
       else
         super - ['destroy', 'new', 'create', 'edit']
       end
