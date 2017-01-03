@@ -14,10 +14,3 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-$('select').select2
-    language:
-        noResults: ->
-             return "<a href='http://google.com'>Add</a>";
-
-    escapeMarkup: (markup) ->
-        return markup;

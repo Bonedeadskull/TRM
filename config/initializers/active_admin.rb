@@ -190,7 +190,7 @@ ActiveAdmin.setup do |config|
   # You can provide an options hash for more control, which is passed along to stylesheet_link_tag():
   #   config.register_stylesheet 'my_print_stylesheet.css', media: :print
   #
-  # config.register_javascript 'trm.js'
+  config.register_javascript 'trm.js'
 
   # == CSV options
   #
