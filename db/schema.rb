@@ -29,9 +29,13 @@ ActiveRecord::Schema.define(version: 20161013213318) do
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
 
   create_table "athletes", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "sport"
+    t.string  "first_name"
+    t.string  "last_name"
+    t.string  "dob"
+    t.integer "grade"
+    t.string  "phone"
+    t.string  "address"
+    t.string  "sport"
   end
 
   create_table "injuries", force: :cascade do |t|

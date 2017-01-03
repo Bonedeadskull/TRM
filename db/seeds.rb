@@ -6,11 +6,11 @@ Trainer.create!([
   {first_name: "William", last_name: "Edwards", username: "wedwards", email: "email@email.com", password: "password", encrypted_password: "$2a$11$G7bxTx8NaojJR81BXVSQbu96g/sb.Q1CgN6lc1X0BzBHvdMYsn8aW", admin: false, reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil}
 ])
 Athlete.create!([
-  {first_name: "Austin", last_name: "Meier", grade: '11', sport: "Football"},
-  {first_name: "Adam", last_name: "Greene", grade: '12', sport: "Swimming"},
-  {first_name: "Wyatt", last_name: "Boyer", grade: '11', sport: "Swimming"},
-  {first_name: "Jackson", last_name: "Jordan", grade: '12', sport: "Cross Country,Track"},
-  {first_name: "Michelle", last_name: "Rodriguez", grade: '9', sport: "Cross Country"}
+  {first_name: "Austin", last_name: "Meier", dob: '10/03/99', grade: '11', phone: '6145605172', address: '506 Cockspur Road', sport: "Football"},
+  {first_name: "Adam", last_name: "Greene", dob: '12/10/98', grade: '12', phone: '7836127638', address: '312 Parlock Road', sport: "Swimming"},
+  {first_name: "Wyatt", last_name: "Boyer", dob: '5/11/26', grade: '11', phone: '8036034405', address: '745 Nylod Court', sport: "Swimming"},
+  {first_name: "Jackson", last_name: "Jordan", dob: '4/20/1886', grade: '12', phone: '8036617752', address: '854 Fallen Court', sport: "Cross Country,Track"},
+  {first_name: "Michelle", last_name: "Rodriguez", dob: '7/11/11', grade: '9', phone: '8035606672', address: '711 Grocery Lane', sport: "Cross Country"}
 ])
 Injury.create!([
   {athlete_id: 3, status: "Hold", active: false, injury_location: "Back", comment: "", date: "2016-09-13"},
