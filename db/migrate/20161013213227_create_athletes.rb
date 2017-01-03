@@ -3,7 +3,7 @@ class CreateAthletes < ActiveRecord::Migration
     create_table :athletes do |t|
       t.string :first_name
       t.string :last_name
-      t.int :grade
+      t.integer :grade
       t.string :sport
     end
   end
