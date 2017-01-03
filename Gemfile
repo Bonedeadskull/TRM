@@ -8,7 +8,6 @@ gem 'activeadmin_addons'
 gem "active_admin_import" , '3.0.0.pre'
 gem 'devise'
 gem 'wicked_pdf'
-gem 'wkhtmltopdf-binary'
 gem 'rails_12factor', group: :production
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
