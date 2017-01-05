@@ -1,5 +1,6 @@
 ActiveAdmin.register Treatment,  { :sort_order => :date_desc }  do
   permit_params :athlete_id, :trainer_id, :treatment_location, :comment, :date, :time
+  active_admin_import
   menu priority: 2, label: "Treatments"
 
   actions :all

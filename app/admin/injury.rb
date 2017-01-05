@@ -1,6 +1,7 @@
 ActiveAdmin.register Injury do
    menu priority: 3, label: "Injuries"
    config.sort_order = "athletes.last_name asc"
+   active_admin_import
    permit_params :first_name, :last_name, :status, :injury_location, :date, :active, :comment, :athlete_id, :injury_id
 
    controller do
