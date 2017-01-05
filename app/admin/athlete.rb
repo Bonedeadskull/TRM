@@ -74,7 +74,7 @@ ActiveAdmin.register Athlete,  { :sort_order => :last_name_asc } do
      f.inputs "Treatment Details" do
        f.input :first_name, :required => true
        f.input :last_name, :required => true
-       f.input :dob
+       f.input :dob, :as => :datepicker
        f.input :grade, :as => :select, :collection => ['9','10','11','12']
        f.input :phone
        f.input :address
