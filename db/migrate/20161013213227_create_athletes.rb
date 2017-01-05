@@ -4,7 +4,7 @@ class CreateAthletes < ActiveRecord::Migration
       t.string :first_name
       t.string :last_name
       t.string :dob
-      t.integer :grade
+      t.string :grade
       t.string :phone
       t.string :address
       t.string :sport
