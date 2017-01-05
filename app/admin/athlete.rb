@@ -67,7 +67,7 @@ ActiveAdmin.register Athlete,  { :sort_order => :last_name_asc } do
 
    filter :first_name_cont, label: 'First Name'
    filter :last_name_cont, label: 'Last Name'
-   filter :grade, label: 'Grade'
+   filter :grade_cont, label: 'Grade'
    filter :sport, label: 'Sport', :as => :select, :collection => ['Football', 'Soccer','Swimming','Tennis','Baseball','Basketball','Softball', 'Wrestling', 'Lacrosse', 'Track', 'Cross Country', 'Volleyball']
 
    form do |f|
@@ -75,7 +75,7 @@ ActiveAdmin.register Athlete,  { :sort_order => :last_name_asc } do
        f.input :first_name, :required => true
        f.input :last_name, :required => true
        f.input :dob
-       f.input :grade, :collection => ['9','10','11','12']
+       f.input :grade, , :as => :select, :collection => ['9','10','11','12']
        f.input :phone
        f.input :address
        f.input :sport, :as => :tags, :collection => ['Football', 'Soccer','Swimming','Tennis','Baseball','Basketball','Softball', 'Wrestling', 'Lacrosse', 'Track', 'Cross Country', 'Volleyball']
