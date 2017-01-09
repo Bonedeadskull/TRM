@@ -24,7 +24,7 @@ ActiveAdmin.register Athlete,  { :sort_order => :last_name_asc } do
    end
 
    show do
-     attributes_table :first_name, :last_name, :sport
+     attributes_table :first_name, :last_name, :dob, :grade, :address, :phone, :sport
      panel "Quick Actions" do
       div class: 'dash_buttons' do
         if(Injury.where(:athlete_id => athlete.id, :active =>  true).exists?)
