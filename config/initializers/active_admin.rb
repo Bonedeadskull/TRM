@@ -268,9 +268,3 @@ ActiveAdmin.setup do |config|
   #
   # config.include_default_association_filters = true
 end
-
-ActiveAdmin.setup do |config|
-  config.before_filter do
-    Time.zone = 'Eastern Time (US & Canada)'
-  end
-end
