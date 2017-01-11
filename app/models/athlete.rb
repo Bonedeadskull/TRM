@@ -4,6 +4,6 @@ class Athlete < ActiveRecord::Base
   accepts_nested_attributes_for :injuries
 
   def to_s
-  "#{last_name}, #{last_name}"
+  "#{last_name}, #{first_name}"
   end
 end
