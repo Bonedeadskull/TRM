@@ -68,7 +68,7 @@ ActiveAdmin.register Treatment,  { :sort_order => :date_desc }  do
 
   form do |f|
      f.inputs "Treatment Details" do
-       f.input :athlete, :as => :tags, collection: Athletes.all
+       f.input :athlete, :as => :tags, :collection => Hash[Athlete.all.map{|t| [t.last_name + ', ' + t.first_name,t.id]}]
        f.input :trainer, :collection => Hash[Trainer.all.map{|t| [t.last_name + ', ' + t.first_name,t.id]}]
        f.input :treatment_location, :collection => ['Abdomen','Ankle','Arm','Back','Finger','Groin','Head','Hip','Knee','Shin','Shoulder','Thigh','Toe','Wrist','Other'], include_blank: true
        f.input :comment, label: 'Comments'
