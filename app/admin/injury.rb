@@ -108,7 +108,7 @@ ActiveAdmin.register Injury do
 
   form do |f|
      f.inputs "Injury Details" do
-       f.input :athlete, hint: link_to('Create Athlete', new_admin_athlete_path)
+       f.input :athlete, :collection => Athlete.all.sort_by(&:last_name), hint: link_to('Create Athlete', new_admin_athlete_path)
        f.input :injury_location, :collection => ['Abdomen','Ankle','Arm','Back','Finger','Groin','Head','Hip','Knee','Shin','Shoulder','Thigh','Toe','Wrist'], include_blank: true
        f.input :active, :as => :boolean, label: 'Injury Active', :input_html => { :checked => 'true'}
        f.input :status, label: 'Player Status', :as => :select, :collection => ['Hold', 'Limit', 'Full'], include_blank: false
