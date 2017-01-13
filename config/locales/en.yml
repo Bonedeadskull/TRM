@@ -21,6 +21,6 @@
 en:
   active_admin:
     powered_by: ""
-  date:
-    formats:
-      default: "%d/%m/%Y"
+date:
+  formats:
+    default: "%d/%m/%Y"
