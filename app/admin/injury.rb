@@ -2,7 +2,7 @@ ActiveAdmin.register Injury do
    menu priority: 3, label: "Injuries"
    config.sort_order = "athletes.last_name asc"
    active_admin_import
-   permit_params :first_name, :last_name, :status, :injury_location, :date, :active, :comment, :athlete_id, :injury_id
+   permit_params :first_name, :last_name, :status, :injury_location, :date, :time, :active, :tcomment, :comment, :athlete_id, :injury_id
 
    controller do
        def index
@@ -71,12 +71,14 @@ ActiveAdmin.register Injury do
   index download_links: [:csv, :xml, :json] do
       selectable_column
       column :athlete_id, :sortable => 'athletes.last_name' do |injury|
-        injury.athlete.last_name + ", " + injury.athlete.first_name
+        link_to(injury.athlete.last_name + ", " + injury.athlete.first_name, admin_injury_path(injury))
       end
       column :injury_location
       column :status
       column :date
+      column :time
       column :active
+      column :tcomment
       actions
     end
 
@@ -93,7 +95,7 @@ ActiveAdmin.register Injury do
   filter :injury_location, :as => :select, :collection => ['Abdomen','Ankle','Arm','Back','Finger','Groin','Head','Hip','Knee','Shin','Shoulder','Thigh','Toe','Wrist']
 
   show do
-    attributes_table :athlete, :injury_location, :active, :status, :date, :comment
+    attributes_table :athlete, :injury_location, :active, :status, :date, :time, :comment
     columns do
       column do
         panel "Quick Actions" do
@@ -113,6 +115,8 @@ ActiveAdmin.register Injury do
        f.input :active, :as => :boolean, label: 'Injury Active', :input_html => { :checked => 'true'}
        f.input :status, label: 'Player Status', :as => :select, :collection => ['Hold', 'Limit', 'Full'], include_blank: false
        f.input :date, as: :datepicker, :input_html => { :value => Date.today}
+       f.input :time, :input_html => { :value => Time.now.strftime("%I:%M %p")}
+       f.input :tcomment, label: 'Message to Trainers'
        f.input :comment, label: 'Message to Coach'
      end
      f.actions

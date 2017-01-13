@@ -5,8 +5,10 @@ class CreateInjuries < ActiveRecord::Migration
       t.string :status
       t.boolean :active
       t.string :injury_location
+      t.text :tcomment
       t.text :comment
       t.date :date
+      t.string :time
     end
   end
 end
