@@ -4,6 +4,17 @@ ActiveAdmin.register Injury do
    active_admin_import
    permit_params :first_name, :last_name, :status, :injury_location, :date, :time, :active, :tcomment, :comment, :athlete_id, :injury_id
 
+   csv do
+       column :athlete_id, :sortable => 'athletes.last_name' { |injury| injury.athlete.first + " " + injury.athlete.last_name }
+       column :injury_location
+       column :status
+       column :date
+       column :time
+       column :active
+       column "Trainer Comment", :tcomment
+     end
+   end
+
    controller do
        def index
          respond_to do |format|
