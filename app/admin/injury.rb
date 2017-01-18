@@ -11,7 +11,7 @@ ActiveAdmin.register Injury do
     column :status
     column :date
     column :time
-    column "Trainer Comment", :tcomment
+    column :tcomment
   end
 
    controller do

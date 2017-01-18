@@ -3,6 +3,16 @@ ActiveAdmin.register Treatment,  { :sort_order => :date_desc }  do
   active_admin_import
   menu priority: 2, label: "Treatments"
 
+  csv do
+   column(:athlete_id) { |treatment| treatment.athlete.last_name }
+   column(:athlete_id) { |injury| treatment.athlete.first_name }
+   column :treatment_location
+   column :treatment_action
+   column :date
+   column :time
+   column :comment
+  end
+
   actions :all
   controller do
     def action_methods
