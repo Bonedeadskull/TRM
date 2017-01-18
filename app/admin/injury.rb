@@ -13,7 +13,6 @@ ActiveAdmin.register Injury do
        column :active
        column "Trainer Comment", :tcomment
      end
-   end
 
    controller do
        def index
