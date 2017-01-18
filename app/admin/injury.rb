@@ -77,7 +77,7 @@ ActiveAdmin.register Injury do
       column :athlete_id, :sortable => 'athletes.last_name' do |injury|
         link_to(injury.athlete.last_name + ", " + injury.athlete.first_name, admin_injury_path(injury))
       end
-      column :injury_location
+      column "Location", :injury_location
       column :status
       column :date
       column :time
