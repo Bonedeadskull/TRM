@@ -5,7 +5,7 @@ ActiveAdmin.register Treatment,  { :sort_order => :date_desc }  do
 
   csv do
    column(:athlete_id) { |treatment| treatment.athlete.last_name }
-   column(:athlete_id) { |injury| treatment.athlete.first_name }
+   column(:athlete_id) { |treatment| treatment.athlete.first_name }
    column :treatment_location
    column :treatment_action
    column :date
