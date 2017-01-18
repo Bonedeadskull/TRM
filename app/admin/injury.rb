@@ -7,11 +7,11 @@ ActiveAdmin.register Injury do
    csv do
     column(:athlete_id) { |injury| injury.athlete.last_name }
     column(:athlete_id) { |injury| injury.athlete.first_name }
-    column "Location", :injury_location
+    column :injury_location
     column :status
     column :date
     column :time
-    column "Trainer Comment", :tcomment
+    column :tcomment
   end
 
    controller do
