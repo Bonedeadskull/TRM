@@ -33,8 +33,8 @@ ActiveAdmin.register Treatment,  { :sort_order => :date_desc }  do
     column :athlete_id, :sortable => 'athletes.last_name' do |injury|
       link_to(injury.athlete.last_name + ", " + injury.athlete.first_name, admin_treatment_path(injury))
     end
-    column :treatment_location
-    column :treatment_action
+    column 'Location', :treatment_location
+    column 'Action', :treatment_action
     column :date
     column :time
     column :comment
