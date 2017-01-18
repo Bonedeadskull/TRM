@@ -78,7 +78,7 @@ ActiveAdmin.register Injury do
       column :date
       column :time
       column :active
-      column :tcomment
+      column :tcomment, label: "Trainer Comment"
       actions
     end
 
