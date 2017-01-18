@@ -5,7 +5,9 @@ ActiveAdmin.register Injury do
    permit_params :first_name, :last_name, :status, :injury_location, :date, :time, :active, :tcomment, :comment, :athlete_id, :injury_id
 
    csv do
-       column(:athlete_id) { |injury| injury.athlete.first + " " + injury.athlete.last_name }
+      column :athlete_id, :sortable => 'athletes.last_name' do |injury|
+        injury.athlete.last_name + ", " + injury.athlete.first_name
+      end
        column :injury_location
        column :status
        column :date
