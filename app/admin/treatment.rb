@@ -85,7 +85,7 @@ ActiveAdmin.register Treatment,  { :sort_order => :date_desc }  do
        f.input :athlete, :collection => Athlete.all.sort_by(&:last_name)
        f.input :trainer, :collection => Hash[Trainer.all.map{|t| [t.last_name + ', ' + t.first_name,t.id]}]
        f.input :treatment_location, :collection => ['Abdomen','Ankle','Arm','Back','Finger','Groin','Head','Hip','Knee','Shin','Shoulder','Thigh','Toe','Wrist','Other'], include_blank: true
-       f.input :treatment_action, :collection => ['Wrap', 'Ice', 'Bath', 'Stretch', 'Exercise', 'Other'], include_blank: true
+       f.input :treatment_action, :as => :tags, :collection => ['Wrap', 'Ice', 'Bath', 'Stretch', 'Exercise', 'Other'], include_blank: true
        f.input :comment, label: 'Trainer Comments'
        f.input :date, as: :datepicker, :input_html => { :value => Date.today}
        f.input :time, :input_html => { :value => Time.now.strftime("%I:%M %p")}
