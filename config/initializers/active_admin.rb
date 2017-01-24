@@ -146,7 +146,7 @@ ActiveAdmin.setup do |config|
   #
   # config.before_filter :do_something_awesome
   config.before_filter do
-   left_sidebar!(collaped: false)
+   left_sidebar!(collaped: true)
  end
   # == Localize Date/Time Format
   #
