@@ -2,7 +2,7 @@ ActiveAdmin.register Treatment,  { :sort_order => :date_desc }  do
   permit_params :athlete_id, :trainer_id, :treatment_location, :treatment_action, :comment, :date, :time
   active_admin_import
   menu priority: 2, label: "Treatments"
-  before_filter :left_sidebar!(collapsed: true)
+  before_filter :left_sidebar!, (collapsed: true)
 
   csv do
    column(:athlete_id) { |treatment| treatment.athlete.last_name }
