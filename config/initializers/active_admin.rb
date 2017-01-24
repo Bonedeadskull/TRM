@@ -263,7 +263,7 @@ ActiveAdmin.setup do |config|
   # You can enable or disable them for all resources here.
   #
   config.before_filter do
-    left_sidebar!(collapsed: true)
+    right_sidebar!(collapsed: true)
   end
   #
   # By default the filters include associations in a select, which means

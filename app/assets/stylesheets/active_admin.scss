@@ -26,7 +26,7 @@ $page-header-text-color: #FFF !default;
 
 
 // Active Admin's got SASS!
-@import "active_admin_sidebar/index";
+@import "active_admin_sidebar"; 
 @import "active_admin/mixins";
 @import "active_admin/base";
 
