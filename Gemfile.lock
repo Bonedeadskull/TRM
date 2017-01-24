@@ -25,6 +25,8 @@ GEM
       rails (>= 4.0)
       rchardet (~> 1.5)
       rubyzip (~> 1.0, >= 1.0.0)
+    active_admin_sidebar (0.0.5)
+      activeadmin
     activeadmin (1.0.0.pre4)
       arbre (~> 1.0, >= 1.0.2)
       bourbon
@@ -227,6 +229,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_admin_import (= 3.0.0.pre)
+  active_admin_sidebar (~> 0.0.5)
   activeadmin (~> 1.0.0.pre4)
   activeadmin_addons
   byebug
@@ -245,9 +248,6 @@ DEPENDENCIES
   web-console (~> 2.0)
   wicked_pdf
   wkhtmltopdf-binary
-
-RUBY VERSION
-   ruby 2.3.1p112
 
 BUNDLED WITH
    1.12.5
