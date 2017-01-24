@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.2.6'
 gem 'pg'
+#gem 'sqlite3'
 gem 'sass-rails', '~> 5.0'
 gem 'activeadmin', '~> 1.0.0.pre4'
 gem 'activeadmin_addons'
