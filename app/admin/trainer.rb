@@ -26,7 +26,7 @@ ActiveAdmin.register Trainer do
         end
       end
     end
-    
+
   index do
     selectable_column
     column :first_name

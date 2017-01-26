@@ -1,8 +1,11 @@
 ActiveAdmin.register Action do
-menu if: proc{ current_trainer.admin? }
+menu parent: "Customize", if: proc{ current_trainer.admin? }
 permit_params :action
 config.clear_sidebar_sections!
 
+show do
+  attributes_table :action
+end
 
 form do |f|
   f.inputs "Action Details" do

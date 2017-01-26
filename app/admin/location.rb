@@ -1,8 +1,11 @@
 ActiveAdmin.register Location do
-menu if: proc{ current_trainer.admin? }
+menu parent: "Customize", if: proc{ current_trainer.admin? }
 permit_params :location
 config.clear_sidebar_sections!
 
+show do
+  attributes_table :location
+end
 
 form do |f|
   f.inputs "Location Details" do
