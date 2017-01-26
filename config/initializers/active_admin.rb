@@ -145,9 +145,9 @@ ActiveAdmin.setup do |config|
   # Active Admin resources and pages from here.
   #
   # config.before_filter :do_something_awesome
-  config.before_filter do
-   left_sidebar!(collaped: true)
- end
+  #config.before_filter do
+   #left_sidebar!(collaped: true)
+ #end
   # == Localize Date/Time Format
   #
   # Set the localize format to display dates and times.
