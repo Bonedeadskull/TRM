@@ -14,6 +14,10 @@ ActiveAdmin.register Injury do
     column :tcomment
   end
 
+  action_item do
+    link_to "Hide Filters", '#', :onclick => 'toggleFilters()',  :id => 'filter_button'
+  end
+
    controller do
        def index
          respond_to do |format|
