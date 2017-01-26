@@ -80,8 +80,8 @@ ActiveAdmin.register Treatment,  { :sort_order => :date_desc }  do
 
   filter :athlete, label: 'Name'
   filter :date, label: 'Treatment Date'
-  filter :treatment_location, :as => :select, :collection => ['Abdomen','Ankle','Arm','Back','Finger','Groin','Head','Hip','Knee','Shin','Shoulder','Thigh','Toe','Wrist','Other']
-  filter :treatment_action, :as => :select, :collection => ['Wrap', 'Ice', 'Bath', 'Stretch', 'Exercise', 'Other']
+  filter :treatment_location, :as => :select, :collection => Location.order("location ASC").all
+  filter :treatment_action, :as => :select, :collection => Action.order("action ASC").all
   filter :trainer, label: 'Trainer'
 
 
@@ -89,8 +89,8 @@ ActiveAdmin.register Treatment,  { :sort_order => :date_desc }  do
      f.inputs "Treatment Details" do
        f.input :athlete, :collection => Athlete.all.sort_by(&:last_name)
        f.input :trainer, :collection => Hash[Trainer.all.map{|t| [t.last_name + ', ' + t.first_name,t.id]}]
-       f.input :treatment_location, :collection => Location.all.sort_by(&:location)
-       f.input :treatment_action, :as => :tags, :collection => Action.order("action ASC").all
+       f.input :treatment_location, :collection => f.input :injury_location, :collection => Location.all.order("location ASC").map { |a| a.location }
+       f.input :treatment_action, :as => :tags, :collection => f.input :injury_location, :collection => Action.all.order("action ASC").map { |a| a.action }
        f.input :comment, label: 'Trainer Comments'
        f.input :date, as: :datepicker, :input_html => { :value => Date.today}
        f.input :time, :input_html => { :value => Time.now.strftime("%I:%M %p")}
