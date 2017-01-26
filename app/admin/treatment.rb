@@ -90,7 +90,7 @@ ActiveAdmin.register Treatment,  { :sort_order => :date_desc }  do
        f.input :athlete, :collection => Athlete.all.sort_by(&:last_name)
        f.input :trainer, :collection => Hash[Trainer.all.map{|t| [t.last_name + ', ' + t.first_name,t.id]}]
        f.input :treatment_location, :collection => Location.all.sort_by(&:location)
-       f.input :treatment_action, :as => :tags, :collection => Action.all.sort_by(&:action)
+       f.input :treatment_action, :as => :tags, :collection => Action.order("action ASC").all
        f.input :comment, label: 'Trainer Comments'
        f.input :date, as: :datepicker, :input_html => { :value => Date.today}
        f.input :time, :input_html => { :value => Time.now.strftime("%I:%M %p")}

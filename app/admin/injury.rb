@@ -2,12 +2,12 @@ ActiveAdmin.register Injury do
    menu priority: 3, label: "Injuries"
    config.sort_order = "athletes.last_name asc"
    active_admin_import
-   permit_params :first_name, :last_name, :status, :injury_location, :date, :time, :active, :tcomment, :comment, :athlete_id, :injury_id
+   permit_params :first_name, :last_name, :status, :injury_location_id, :date, :time, :active, :tcomment, :comment, :athlete_id, :injury_id
 
    csv do
     column(:athlete_id) { |injury| injury.athlete.last_name }
     column(:athlete_id) { |injury| injury.athlete.first_name }
-    column :injury_location
+    column(:injury_location_id) { |injury| injury.location.location }
     column :status
     column :date
     column :time
@@ -87,7 +87,9 @@ ActiveAdmin.register Injury do
       column :athlete_id, :sortable => 'athletes.last_name' do |injury|
         link_to(injury.athlete.last_name + ", " + injury.athlete.first_name, admin_injury_path(injury))
       end
-      column "Location", :injury_location
+      column "Location", :injury_location_id, :sortable => 'locations.location' do |injury|
+        injury.location.location
+      end
       column :status
       column :date
       column :time
@@ -106,7 +108,7 @@ ActiveAdmin.register Injury do
   filter :date, label: 'Injury Date'
   filter :status, label: 'Player Status', :as => :select, :collection => ['Hold', 'Limit', 'Full']
   filter :active
-  filter :injury_location, :as => :select, :collection => Location.order("location ASC").pluck(:location, :id)
+  filter :injury_location, :as => :select, :collection => Location.order("location ASC").asc
   show do
     attributes_table :athlete, :injury_location, :active, :status, :date, :time, :comment
     columns do
@@ -124,7 +126,7 @@ ActiveAdmin.register Injury do
   form do |f|
      f.inputs "Injury Details" do
        f.input :athlete, :collection => Athlete.all.sort_by(&:last_name), hint: link_to('Create Athlete', new_admin_athlete_path)
-       f.input :injury_location, :collection => Location.order("location ASC").pluck(:location, :id)
+       f.input :injury_location, :collection => Location.order("location ASC").all
        f.input :active, :as => :boolean, label: 'Injury Active', :input_html => { :checked => 'true'}
        f.input :status, label: 'Player Status', :as => :select, :collection => ['Hold', 'Limit', 'Full'], include_blank: false
        f.input :date, as: :datepicker, :input_html => { :value => Date.today}
