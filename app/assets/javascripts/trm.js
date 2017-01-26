@@ -1,8 +1,8 @@
 var filterStatus = true, filters, table;
 
 window.onload = function() {
-  filters = querySelector("#sidebar");
-  table = querySelector("#main_content");
+  filters = document.querySelector("#sidebar");
+  table = document.querySelector("#main_content");
 }
 
 function toggleFilters() {
