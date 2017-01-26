@@ -1,4 +1,4 @@
-ActiveAdmin.register Action do
+ActiveAdmin.register Action,  { :sort_order => :action_asc } do
 menu parent: "Customize", if: proc{ current_trainer.admin? }
 permit_params :action
 config.clear_sidebar_sections!

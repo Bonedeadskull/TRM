@@ -1,4 +1,4 @@
-ActiveAdmin.register Location do
+ActiveAdmin.register Location,  { :sort_order => :location_asc } do
 menu parent: "Customize", if: proc{ current_trainer.admin? }
 permit_params :location
 config.clear_sidebar_sections!
