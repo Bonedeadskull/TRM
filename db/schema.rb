@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161013213318) do
+ActiveRecord::Schema.define(version: 20170126171159) do
+
+  create_table "actions", force: :cascade do |t|
+    t.integer  "treatment_id"
+    t.string   "action"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "actions", ["treatment_id"], name: "index_actions_on_treatment_id"
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -29,13 +38,13 @@ ActiveRecord::Schema.define(version: 20161013213318) do
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
 
   create_table "athletes", force: :cascade do |t|
-    t.string  "first_name"
-    t.string  "last_name"
-    t.string  "dob"
-    t.integer "grade"
-    t.string  "phone"
-    t.string  "address"
-    t.string  "sport"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "dob"
+    t.string "grade"
+    t.string "phone"
+    t.string "address"
+    t.string "sport"
   end
 
   create_table "injuries", force: :cascade do |t|
@@ -43,11 +52,24 @@ ActiveRecord::Schema.define(version: 20161013213318) do
     t.string  "status"
     t.boolean "active"
     t.string  "injury_location"
+    t.text    "tcomment"
     t.text    "comment"
     t.date    "date"
+    t.string  "time"
   end
 
   add_index "injuries", ["athlete_id"], name: "index_injuries_on_athlete_id"
+
+  create_table "locations", force: :cascade do |t|
+    t.integer  "injury_id"
+    t.integer  "treatment_id"
+    t.string   "location"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "locations", ["injury_id"], name: "index_locations_on_injury_id"
+  add_index "locations", ["treatment_id"], name: "index_locations_on_treatment_id"
 
   create_table "trainers", force: :cascade do |t|
     t.string   "first_name"
@@ -75,6 +97,7 @@ ActiveRecord::Schema.define(version: 20161013213318) do
     t.integer "athlete_id"
     t.integer "trainer_id"
     t.string  "treatment_location"
+    t.string  "treatment_action"
     t.text    "comment"
     t.date    "date"
     t.string  "time"
