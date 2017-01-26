@@ -33,32 +33,32 @@ Treatment.create!([
   {athlete_id: 3, trainer_id: 1, treatment_location: "Shoulder", treatment_action: "Ice", comment: "Ice Pack", date: "2016-10-25", time: "01:05 PM"}
 ])
 Location.create!([
-  {location: "Other"}
-  {location: "Ankle"}
-  {location: "Arm"}
-  {location: "Back"}
-  {location: "Finger"}
-  {location: "Groin"}
-  {location: "Head"}
-  {location: "Hip"}
-  {location: "Knee"}
-  {location: "Abdomen"}
-  {location: "Shin"}
-  {location: "Shoulder"}
-  {location: "Thigh"}
-  {location: "Toe"}
+  {location: "Other"},
+  {location: "Ankle"},
+  {location: "Arm"},
+  {location: "Back"},
+  {location: "Finger"},
+  {location: "Groin"},
+  {location: "Head"},
+  {location: "Hip"},
+  {location: "Knee"},
+  {location: "Abdomen"},
+  {location: "Shin"},
+  {location: "Shoulder"},
+  {location: "Thigh"},
+  {location: "Toe"},
   {location: "Wrist"}
 ])
 Action.create!([
-  {action: "RICE"}
-  {action: "Cryotherapy"}
-  {action: "Compression"}
-  {action: "Crutches"}
-  {action: "Brace"}
-  {action: "Tape"}
-  {action: "US"}
-  {action: "ESTIM/NMES"}
-  {action: "Whirpool"}
-  {action: "Padding/Protection"}
+  {action: "RICE"},
+  {action: "Cryotherapy"},
+  {action: "Compression"},
+  {action: "Crutches"},
+  {action: "Brace"},
+  {action: "Tape"},
+  {action: "US"},
+  {action: "ESTIM/NMES"},
+  {action: "Whirpool"},
+  {action: "Padding/Protection"},
   {action: "NSAIDs"}
 ])
