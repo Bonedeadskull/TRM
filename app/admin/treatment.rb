@@ -14,7 +14,7 @@ ActiveAdmin.register Treatment,  { :sort_order => :date_desc }  do
   end
 
   action_item do
-    link_to "Hide Filters", '#', :onclick => 'toggleFilters()'
+    link_to "Hide Filters", '#', :onclick => 'toggleFilters()',  :id => 'filter_button'
   end
 
   actions :all
