@@ -2,7 +2,6 @@ ActiveAdmin.register Treatment,  { :sort_order => :date_desc }  do
   permit_params :athlete_id, :trainer_id, :treatment_location, :treatment_action, :comment, :date, :time
   active_admin_import
   menu priority: 2, label: "Treatments"
-  controller.clear_sidebar_sections!
 
   csv do
    column(:athlete_id) { |treatment| treatment.athlete.last_name }
@@ -23,6 +22,10 @@ ActiveAdmin.register Treatment,  { :sort_order => :date_desc }  do
         super - ['destroy']
       end
     end
+  end
+
+  action_item :view, only: :show do
+    link_to 'Duplicate', new_admin_treatment_path
   end
 
   controller do
