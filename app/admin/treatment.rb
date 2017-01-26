@@ -13,6 +13,10 @@ ActiveAdmin.register Treatment,  { :sort_order => :date_desc }  do
    column :comment
   end
 
+  action_item do
+    link_to :Hide_Filters, new_admin_treatment_path
+  end
+
   actions :all
   controller do
     def action_methods
@@ -24,9 +28,6 @@ ActiveAdmin.register Treatment,  { :sort_order => :date_desc }  do
     end
   end
 
-  action_item :duplicate, only: :show do
-    link_to 'Duplicate', new_admin_treatment_path
-  end
 
   controller do
     def create
