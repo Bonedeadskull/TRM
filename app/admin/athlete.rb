@@ -3,6 +3,10 @@ ActiveAdmin.register Athlete,  { :sort_order => :last_name_asc } do
   permit_params :first_name, :last_name, :dob, :grade, :address, :phone ,:sport, :id
   active_admin_import
 
+  action_item do
+    link_to "Hide Filters", '#', :onclick => 'toggleFilters()',  :id => 'filter_button'
+  end
+
   actions :all
   controller do
     def action_methods
