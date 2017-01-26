@@ -24,7 +24,7 @@ ActiveAdmin.register Treatment,  { :sort_order => :date_desc }  do
     end
   end
 
-  action_item :view, only: :show do
+  action_item :duplicate, only: :show do
     link_to 'Duplicate', new_admin_treatment_path
   end
 
