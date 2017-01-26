@@ -13,4 +13,5 @@ function toggleFilters() {
     filters.style.display = "";
     table.style['margin-right'] = "300px";
   }
+  filterStatus = !filterStatus;
 }
