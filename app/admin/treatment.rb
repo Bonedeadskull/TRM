@@ -14,7 +14,7 @@ ActiveAdmin.register Treatment,  { :sort_order => :date_desc }  do
   end
 
   action_item do
-    link_to :Hide_Filters, new_admin_treatment_path
+    link_to "Hide Filters", '#', :onclick => 'alert("Please no!")'
   end
 
   actions :all
