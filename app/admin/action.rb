@@ -11,8 +11,4 @@ form do |f|
   f.actions
 end
 
-
-end
-
-
 end
