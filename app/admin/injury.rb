@@ -102,8 +102,7 @@ ActiveAdmin.register Injury do
   filter :date, label: 'Injury Date'
   filter :status, label: 'Player Status', :as => :select, :collection => ['Hold', 'Limit', 'Full']
   filter :active
-  filter :injury_location, :as => :select, :collection => ['Abdomen','Ankle','Arm','Back','Finger','Groin','Head','Hip','Knee','Shin','Shoulder','Thigh','Toe','Wrist']
-
+  filter :injury_location, :as => :select, :collection => Location.all.sort_by(&:location)
   show do
     attributes_table :athlete, :injury_location, :active, :status, :date, :time, :comment
     columns do

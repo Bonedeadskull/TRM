@@ -7,6 +7,12 @@ show do
   attributes_table :action
 end
 
+index do
+  selectable_column
+  column :action
+  actions
+end
+
 form do |f|
   f.inputs "Action Details" do
     f.input :action, :required => true

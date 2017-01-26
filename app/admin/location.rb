@@ -7,6 +7,12 @@ show do
   attributes_table :location
 end
 
+index do
+  selectable_column
+  column :location
+  actions
+end
+
 form do |f|
   f.inputs "Location Details" do
     f.input :location, :required => true
