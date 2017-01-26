@@ -1,7 +1,7 @@
 class CreateActions < ActiveRecord::Migration
   def change
     create_table :actions do |t|
-      t.action :string
+      t.string :action
 
       t.timestamps null: false
     end
