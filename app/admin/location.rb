@@ -1,5 +1,5 @@
 ActiveAdmin.register Location do
-menu if: proc{ current_user.admin? }
+menu if: proc{ current_trainer.admin? }
 permit_params :location
 config.clear_sidebar_sections!
 
