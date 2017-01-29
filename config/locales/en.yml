@@ -21,3 +21,4 @@
 en:
   active_admin:
     powered_by: ""
+    clone_model: "Duplicate %{model}"

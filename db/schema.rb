@@ -61,15 +61,10 @@ ActiveRecord::Schema.define(version: 20170126171159) do
   add_index "injuries", ["athlete_id"], name: "index_injuries_on_athlete_id"
 
   create_table "locations", force: :cascade do |t|
-    t.integer  "injury_id"
-    t.integer  "treatment_id"
     t.string   "location"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
-
-  add_index "locations", ["injury_id"], name: "index_locations_on_injury_id"
-  add_index "locations", ["treatment_id"], name: "index_locations_on_treatment_id"
 
   create_table "trainers", force: :cascade do |t|
     t.string   "first_name"
@@ -97,12 +92,13 @@ ActiveRecord::Schema.define(version: 20170126171159) do
     t.integer "athlete_id"
     t.integer "trainer_id"
     t.string  "treatment_location"
-    t.string  "treatment_action"
+    t.integer "action_id"
     t.text    "comment"
     t.date    "date"
     t.string  "time"
   end
 
+  add_index "treatments", ["action_id"], name: "index_treatments_on_action_id"
   add_index "treatments", ["athlete_id"], name: "index_treatments_on_athlete_id"
   add_index "treatments", ["trainer_id"], name: "index_treatments_on_trainer_id"
 
