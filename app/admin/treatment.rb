@@ -97,7 +97,7 @@ ActiveAdmin.register Treatment,  { :sort_order => :date_desc }  do
   filter :athlete, label: 'Name'
   filter :date, label: 'Treatment Date'
   filter :treatment_location, :as => :select, :collection => Location.order("location ASC").all
-  filter :action_id, :as => :select, :collection => Action.order("action ASC").all
+  filter :actions, :as => :select, :collection => Action.order("action ASC").all
   filter :trainer, label: 'Trainer'
 
 
