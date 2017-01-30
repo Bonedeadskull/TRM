@@ -82,7 +82,7 @@ div input[type=submit], div input[type=button], div input[type=submit]:hover, di
 form.button_to, div.dash_buttons {
   display: inline;
 }
-ol li.choice , li.choice input{
+ol.choices-group , li.choice{
   margin:0.1em 0.5em 0.5em 0;
   display: inline-block;
   padding-right: 10px;
