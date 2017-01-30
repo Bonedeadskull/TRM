@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170126171159) do
+ActiveRecord::Schema.define(version: 20170130185650) do
 
   create_table "actions", force: :cascade do |t|
     t.integer  "treatment_id"
@@ -87,6 +87,16 @@ ActiveRecord::Schema.define(version: 20170126171159) do
 
   add_index "trainers", ["reset_password_token"], name: "index_trainers_on_reset_password_token", unique: true
   add_index "trainers", ["username"], name: "index_trainers_on_username", unique: true
+
+  create_table "treatment_actions", force: :cascade do |t|
+    t.integer  "treatment_id"
+    t.integer  "action_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "treatment_actions", ["action_id"], name: "index_treatment_actions_on_action_id"
+  add_index "treatment_actions", ["treatment_id"], name: "index_treatment_actions_on_treatment_id"
 
   create_table "treatments", force: :cascade do |t|
     t.integer "athlete_id"

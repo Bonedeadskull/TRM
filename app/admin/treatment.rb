@@ -63,6 +63,7 @@ ActiveAdmin.register Treatment,  { :sort_order => :date_desc }  do
     column :actions do |treatment|
     link_to("View", admin_treatment_path(treatment))
     end
+    column :date
     column :time
     column :comment
     column 'Trainer' do |treatment|

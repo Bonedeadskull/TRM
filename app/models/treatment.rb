@@ -1,7 +1,7 @@
 class Treatment < ActiveRecord::Base
-  belongs_to :athlete
-  belongs_to :trainer
-  has_many :actions; accepts_nested_attributes_for :actions
+  has_many :treatmentactions
+  has_many :actions, :through => :treatmentactions
+  accepts_nested_attributes_for :treatmentactions
   def clone!
     r = self.dup
     r.save!
