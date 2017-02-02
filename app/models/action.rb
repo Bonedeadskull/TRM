@@ -1,8 +1,5 @@
 class Action < ActiveRecord::Base
-  has_many :treatmentactions
-  has_many :treatments, :through => :treatmentactions
-  accepts_nested_attributes_for :treatmentactions
-
+  validates_presence_of :action
   def to_s
   "#{action}"
   end

@@ -1,5 +1,5 @@
 ActiveAdmin.register Treatment,  { :sort_order => :date_desc }  do
-  permit_params :athlete_id, :trainer_id, :treatment_location, :comment, :date, :time, action_ids: []
+  permit_params :athlete_id, :trainer_id, :treatment_location, :comment, :date, :time, cures_attributes: [:id, :action, :treatment_id, :action_id, :_destroy]
   active_admin_import
   menu priority: 2, label: "Treatments"
 
@@ -7,7 +7,7 @@ ActiveAdmin.register Treatment,  { :sort_order => :date_desc }  do
    column(:athlete_id) { |treatment| treatment.athlete.last_name }
    column(:athlete_id) { |treatment| treatment.athlete.first_name }
    column :treatment_location
-   column :action_ids
+   #column :action_ids
    column :date
    column :time
    column :comment
@@ -20,8 +20,8 @@ ActiveAdmin.register Treatment,  { :sort_order => :date_desc }  do
   member_action :clone, method: :get do
     @treatment = resource.clone!
 
-    #redirect_to edit_admin_treatment_path( @treatment )
-    redirect_to collection_url
+    redirect_to edit_admin_treatment_path( @treatment )
+    #redirect_to collection_url
   end
 
   action_item :only => :show do
@@ -60,8 +60,8 @@ ActiveAdmin.register Treatment,  { :sort_order => :date_desc }  do
       link_to(injury.athlete.last_name + ", " + injury.athlete.first_name, admin_treatment_path(injury))
     end
     column 'Location', :treatment_location
-    column :actions do |treatment|
-    link_to("View", admin_treatment_path(treatment))
+    column :action do |treatment|
+      treatment.actions.map { |a| a.action }.join(", ").html_safe
     end
     column :date
     column :time
@@ -79,10 +79,8 @@ ActiveAdmin.register Treatment,  { :sort_order => :date_desc }  do
         link_to(treatment.trainer.first_name + ' ' + treatment.trainer.last_name, admin_trainer_path(treatment.trainer))
       end
       row :treatment_location
-      table_for treatment.actions.order('action ASC') do
-        column "Actions" do |action|
-          action.action
-        end
+      row :action do |treatment|
+        treatment.actions.map { |a| a.action }.join(", ").html_safe
       end
       row :date
       row :time
@@ -107,7 +105,9 @@ ActiveAdmin.register Treatment,  { :sort_order => :date_desc }  do
        f.input :athlete, :collection => Athlete.all.sort_by(&:last_name)
        f.input :trainer, :collection => Hash[Trainer.all.map{|t| [t.last_name + ', ' + t.first_name,t.id]}]
        f.input :treatment_location, :collection => Location.all.order("location ASC").map { |a| a.location }
-       f.input :actions, as: :check_boxes, :collection => Hash[Action.all.order("action ASC").map{|t| [t.action ,t.id]}]
+       f.has_many :cures, :allow_destroy => true do |a|
+        a.input :action
+        end
        f.input :comment, label: 'Trainer Comments'
        f.input :date, as: :datepicker, :input_html => { :value => Date.today}
        f.input :time, :input_html => { :value => Time.now.strftime("%I:%M %p")}

@@ -11,16 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170130185650) do
+ActiveRecord::Schema.define(version: 20170202030434) do
 
   create_table "actions", force: :cascade do |t|
-    t.integer  "treatment_id"
     t.string   "action"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
-
-  add_index "actions", ["treatment_id"], name: "index_actions_on_treatment_id"
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -46,6 +43,16 @@ ActiveRecord::Schema.define(version: 20170130185650) do
     t.string "address"
     t.string "sport"
   end
+
+  create_table "cures", force: :cascade do |t|
+    t.integer  "treatment_id"
+    t.integer  "action_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "cures", ["action_id"], name: "index_cures_on_action_id"
+  add_index "cures", ["treatment_id"], name: "index_cures_on_treatment_id"
 
   create_table "injuries", force: :cascade do |t|
     t.integer "athlete_id"
@@ -87,16 +94,6 @@ ActiveRecord::Schema.define(version: 20170130185650) do
 
   add_index "trainers", ["reset_password_token"], name: "index_trainers_on_reset_password_token", unique: true
   add_index "trainers", ["username"], name: "index_trainers_on_username", unique: true
-
-  create_table "treatment_actions", force: :cascade do |t|
-    t.integer  "treatment_id"
-    t.integer  "action_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-  end
-
-  add_index "treatment_actions", ["action_id"], name: "index_treatment_actions_on_action_id"
-  add_index "treatment_actions", ["treatment_id"], name: "index_treatment_actions_on_treatment_id"
 
   create_table "treatments", force: :cascade do |t|
     t.integer "athlete_id"

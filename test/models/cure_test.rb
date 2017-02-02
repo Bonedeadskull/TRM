@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class TreatmentActionTest < ActiveSupport::TestCase
+class CureTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
