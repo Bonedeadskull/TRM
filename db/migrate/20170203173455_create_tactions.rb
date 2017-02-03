@@ -1,6 +1,6 @@
-class CreateActions < ActiveRecord::Migration
+class CreateTactions < ActiveRecord::Migration
   def change
-    create_table :actions do |t|
+    create_table :tactions do |t|
       t.string :name
 
       t.timestamps null: false

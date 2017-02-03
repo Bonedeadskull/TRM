@@ -1,9 +1,9 @@
 class Cure < ActiveRecord::Base
   belongs_to :treatment
-  belongs_to :action
+  belongs_to :taction
 
   def to_s
-  "#{action}"
+  "#{name}"
   end
 
 end

@@ -11,13 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170202030434) do
-
-  create_table "actions", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+ActiveRecord::Schema.define(version: 20170203173455) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -46,12 +40,12 @@ ActiveRecord::Schema.define(version: 20170202030434) do
 
   create_table "cures", force: :cascade do |t|
     t.integer  "treatment_id"
-    t.integer  "action_id"
+    t.integer  "taction_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
 
-  add_index "cures", ["action_id"], name: "index_cures_on_action_id"
+  add_index "cures", ["taction_id"], name: "index_cures_on_taction_id"
   add_index "cures", ["treatment_id"], name: "index_cures_on_treatment_id"
 
   create_table "injuries", force: :cascade do |t|
@@ -69,6 +63,12 @@ ActiveRecord::Schema.define(version: 20170202030434) do
 
   create_table "locations", force: :cascade do |t|
     t.string   "location"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tactions", force: :cascade do |t|
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -99,14 +99,14 @@ ActiveRecord::Schema.define(version: 20170202030434) do
     t.integer "athlete_id"
     t.integer "trainer_id"
     t.string  "treatment_location"
-    t.integer "action_id"
+    t.integer "taction_id"
     t.text    "comment"
     t.date    "date"
     t.string  "time"
   end
 
-  add_index "treatments", ["action_id"], name: "index_treatments_on_action_id"
   add_index "treatments", ["athlete_id"], name: "index_treatments_on_athlete_id"
+  add_index "treatments", ["taction_id"], name: "index_treatments_on_taction_id"
   add_index "treatments", ["trainer_id"], name: "index_treatments_on_trainer_id"
 
 end

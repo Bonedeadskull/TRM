@@ -50,8 +50,7 @@ Location.create!([
   {location: "Toe"},
   {location: "Wrist"}
 ])
-=begin
-Action.create!([
+Taction.create!([
   {name: "RICE"},
   {name: "Cryotherapy"},
   {name: "Compression"},
@@ -64,4 +63,3 @@ Action.create!([
   {name: "Padding/Protection"},
   {name: "NSAIDs"}
 ])
-=end
