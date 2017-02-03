@@ -8,7 +8,7 @@ class Treatment < ActiveRecord::Base
     r = self.dup
     r.save!
 
-    [ :actions ].each do |c|
+    [ :cures ].each do |c|
       self.send( c ).each do |child|
         n = child.dup
         n.treatment_id = r.id

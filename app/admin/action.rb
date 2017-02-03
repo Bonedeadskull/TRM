@@ -1,21 +1,10 @@
-ActiveAdmin.register Action,  { :sort_order => :action_asc } do
+ActiveAdmin.register Action do
+permit_params :name, :action_id
 menu parent: "Customize", if: proc{ current_trainer.admin? }
-permit_params :action
-config.clear_sidebar_sections!
-
-show do
-  attributes_table :action
-end
-
-index do
-  selectable_column
-  column :action
-  actions
-end
 
 form do |f|
-  f.inputs "Action Details" do
-    f.input :action, :required => true
+  f.inputs "Action Name" do
+    f.input :name
   end
   f.actions
 end

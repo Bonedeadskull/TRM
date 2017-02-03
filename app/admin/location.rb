@@ -15,7 +15,7 @@ end
 
 form do |f|
   f.inputs "Location Details" do
-    f.input :location, :required => true
+    f.input :location
   end
   f.actions
 end

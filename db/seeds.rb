@@ -50,16 +50,18 @@ Location.create!([
   {location: "Toe"},
   {location: "Wrist"}
 ])
+=begin
 Action.create!([
-  {action: "RICE"},
-  {action: "Cryotherapy"},
-  {action: "Compression"},
-  {action: "Crutches"},
-  {action: "Brace"},
-  {action: "Tape"},
-  {action: "US"},
-  {action: "ESTIM/NMES"},
-  {action: "Whirpool"},
-  {action: "Padding/Protection"},
-  {action: "NSAIDs"}
+  {name: "RICE"},
+  {name: "Cryotherapy"},
+  {name: "Compression"},
+  {name: "Crutches"},
+  {name: "Brace"},
+  {name: "Tape"},
+  {name: "US"},
+  {name: "ESTIM/NMES"},
+  {name: "Whirpool"},
+  {name: "Padding/Protection"},
+  {name: "NSAIDs"}
 ])
+=end

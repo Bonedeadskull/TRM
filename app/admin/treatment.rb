@@ -1,5 +1,5 @@
 ActiveAdmin.register Treatment,  { :sort_order => :date_desc }  do
-  permit_params :athlete_id, :trainer_id, :treatment_location, :comment, :date, :time, cures_attributes: [:id, :action, :treatment_id, :action_id, :_destroy]
+  permit_params :athlete_id, :trainer_id, :treatment_location, :comment, :date, :time, cures_attributes: [:id, :name, :treatment_id, :action_id, :_destroy]
   active_admin_import
   menu priority: 2, label: "Treatments"
 
@@ -7,7 +7,9 @@ ActiveAdmin.register Treatment,  { :sort_order => :date_desc }  do
    column(:athlete_id) { |treatment| treatment.athlete.last_name }
    column(:athlete_id) { |treatment| treatment.athlete.first_name }
    column :treatment_location
-   #column :action_ids
+   column :action do |treatment|
+       treatment.actions.map { |a| a.name }.join(", ").html_safe
+     end
    column :date
    column :time
    column :comment
@@ -61,7 +63,7 @@ ActiveAdmin.register Treatment,  { :sort_order => :date_desc }  do
     end
     column 'Location', :treatment_location
     column :action do |treatment|
-      treatment.actions.map { |a| a.action }.join(", ").html_safe
+      treatment.actions.map { |a| a.name }.join(", ").html_safe
     end
     column :date
     column :time
@@ -80,7 +82,7 @@ ActiveAdmin.register Treatment,  { :sort_order => :date_desc }  do
       end
       row :treatment_location
       row :action do |treatment|
-        treatment.actions.map { |a| a.action }.join(", ").html_safe
+        treatment.actions.map { |a| a.name }.join(", ").html_safe
       end
       row :date
       row :time
@@ -96,7 +98,7 @@ ActiveAdmin.register Treatment,  { :sort_order => :date_desc }  do
   filter :athlete, label: 'Name'
   filter :date, label: 'Treatment Date'
   filter :treatment_location, :as => :select, :collection => Location.order("location ASC").all
-  filter :actions, :as => :select, :collection => Action.order("action ASC").all
+  filter :actions, :as => :select, :collection => Action.order("name ASC").all
   filter :trainer, label: 'Trainer'
 
 
@@ -106,7 +108,7 @@ ActiveAdmin.register Treatment,  { :sort_order => :date_desc }  do
        f.input :trainer, :collection => Hash[Trainer.all.map{|t| [t.last_name + ', ' + t.first_name,t.id]}]
        f.input :treatment_location, :collection => Location.all.order("location ASC").map { |a| a.location }
        f.has_many :cures, :allow_destroy => true do |a|
-        a.input :action
+        a.input :action, :collection => Action.all.order("name ASC")
         end
        f.input :comment, label: 'Trainer Comments'
        f.input :date, as: :datepicker, :input_html => { :value => Date.today}
