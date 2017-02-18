@@ -24,15 +24,6 @@ Injury.create!([
   {athlete_id: 5, status: "Full", active: false, injury_location: "Back", comment: "", tcomment: "", date: "2016-08-09", time: "12:46 PM"},
   {athlete_id: 1, status: "Hold", active: true, injury_location: "Abdomen", comment: "", tcomment: "", date: "2016-10-21", time: "12:46 PM"}
 ])
-=begin Treatment.create!([
-  {athlete_id: 5, trainer_id: 4, treatment_location: "Abdomen", comment: "Wrap", date: "2016-10-01", time: "12:46 PM"},
-  {athlete_id: 5, trainer_id: 5, treatment_location: "Abdomen", comment: "Wrap", date: "2016-10-02", time: "12:47 PM"},
-  {athlete_id: 1, trainer_id: 1, treatment_location: "Abdomen", comment: "Ice", date: "2016-10-24", time: "12:48 PM"},
-  {athlete_id: 1, trainer_id: 4, treatment_location: "Abdomen", comment: "Ice Wrap", date: "2016-10-14", time: "12:49 PM"},
-  {athlete_id: 1, trainer_id: 1, treatment_location: "Arm", comment: "Splint", date: "2016-10-15", time: "12:50 PM"},
-  {athlete_id: 3, trainer_id: 1, treatment_location: "Shoulder",  comment: "Ice Pack", date: "2016-10-25", time: "01:05 PM"}
-])
-=end
 Location.create!([
   {location: "Other"},
   {location: "Ankle"},
@@ -62,4 +53,18 @@ Taction.create!([
   {name: "Whirpool"},
   {name: "Padding/Protection"},
   {name: "NSAIDs"}
+])
+Sport.create!([
+  {name: "Football"},
+  {name: "Wrestling"},
+  {name: "Lacrosse"},
+  {name: "Baseball"},
+  {name: "Softball"},
+  {name: "Volleyball"},
+  {name: "Track"},
+  {name: "Cross-Country"},
+  {name: "Basketball"},
+  {name: "Soccer"},
+  {name: "Swimming"},
+  {name: "Tennis"}
 ])

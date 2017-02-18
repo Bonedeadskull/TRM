@@ -1,17 +1,23 @@
-ActiveAdmin.register Sport do
+ActiveAdmin.register Sport,  { :sort_order => :name_asc } do
+menu parent: "Customize", if: proc{ current_trainer.admin? }
+permit_params :name
+config.clear_sidebar_sections!
 
-# See permitted parameters documentation:
-# https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-#
-# permit_params :list, :of, :attributes, :on, :model
-#
-# or
-#
-# permit_params do
-#   permitted = [:permitted, :attributes]
-#   permitted << :other if params[:action] == 'create' && current_user.admin?
-#   permitted
-# end
+show do
+  attributes_table :name
+end
 
+index do
+  selectable_column
+  column :name
+  actions
+end
+
+form do |f|
+  f.inputs "Sport" do
+    f.input :name
+  end
+  f.actions
+end
 
 end

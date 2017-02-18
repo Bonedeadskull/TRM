@@ -22,8 +22,8 @@ ActiveAdmin.register Treatment,  { :sort_order => :date_desc }  do
   member_action :clone, method: :get do
     @treatment = resource.clone!
 
-    redirect_to edit_admin_treatment_path( @treatment )
-    #redirect_to collection_url
+    #redirect_to edit_admin_treatment_path( @treatment )
+    redirect_to collection_url
   end
 
   action_item :only => :show do
@@ -108,7 +108,7 @@ ActiveAdmin.register Treatment,  { :sort_order => :date_desc }  do
        f.input :trainer, :collection => Hash[Trainer.all.map{|t| [t.last_name + ', ' + t.first_name,t.id]}]
        f.input :treatment_location, :collection => Location.all.order("location ASC").map { |a| a.location }
        f.has_many :cures, :heading => 'Actions', :new_record => false, :allow_destroy => true do |a|
-        a.input :taction, label: 'Action', :collection => Taction.all.order("name ASC")
+        a.input :taction, :heading => 'Action', :collection => Taction.all.order("name ASC")
         end
        f.input :comment, label: 'Trainer Comments'
        if f.object.new_record?
