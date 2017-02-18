@@ -6,6 +6,8 @@ class Treatment < ActiveRecord::Base
   accepts_nested_attributes_for :cures, :allow_destroy => true
   def clone!
     r = self.dup
+    r.date = Date.today.strftime("%m/%d/%Y")
+    r.time = Time.now.strftime("%I:%M %p")
     r.save!
 
     [ :cures ].each do |c|

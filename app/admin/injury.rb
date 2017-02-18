@@ -127,8 +127,13 @@ ActiveAdmin.register Injury do
        f.input :injury_location, :collection => Location.all.order("location ASC").map { |a| a.location }
        f.input :active, :as => :boolean, label: 'Injury Active', :input_html => { :checked => 'true'}
        f.input :status, label: 'Player Status', :as => :select, :collection => ['Hold', 'Limit', 'Full'], include_blank: false
-       f.input :date, as: :datepicker, :input_html => { :value => Date.today}
-       f.input :time, :input_html => { :value => Time.now.strftime("%I:%M %p")}
+       if f.object.new_record?
+         f.input :date, as: :datepicker, datepicker_options: {dateFormat: 'mm/dd/yy', changeYear: true},  :input_html => { :value => Date.today}
+         f.input :time, :input_html => { :value => Time.now.strftime("%I:%M %p")}
+       else
+         f.input :date, as: :datepicker, datepicker_options: {dateFormat: 'mm/dd/yy', changeYear: true}
+         f.input :time
+       end
        f.input :tcomment, label: 'Message to Trainers'
        f.input :comment, label: 'Message to Coach'
      end

@@ -97,7 +97,7 @@ ActiveAdmin.register Treatment,  { :sort_order => :date_desc }  do
 
   filter :athlete, label: 'Name'
   filter :date, label: 'Treatment Date'
-  filter :treatment_location, :as => :select, :collection => Location.order("location ASC").all
+  filter :treatment_location, :as => :select, :collection => Location.all.order("location ASC").map { |a| a.location }
   filter :tactions, label: 'Actions', :as => :select, :collection => Taction.order("name ASC").all
   filter :trainer, label: 'Trainer'
 
@@ -111,8 +111,13 @@ ActiveAdmin.register Treatment,  { :sort_order => :date_desc }  do
         a.input :taction, label: 'Action', :collection => Taction.all.order("name ASC")
         end
        f.input :comment, label: 'Trainer Comments'
-       f.input :date, as: :datepicker, :input_html => { :value => Date.today}
-       f.input :time, :input_html => { :value => Time.now.strftime("%I:%M %p")}
+       if f.object.new_record?
+         f.input :date, as: :datepicker, datepicker_options: {dateFormat: 'mm/dd/yy', changeYear: true},  :input_html => { :value => Date.today}
+         f.input :time, :input_html => { :value => Time.now.strftime("%I:%M %p")}
+       else
+         f.input :date, as: :datepicker, datepicker_options: {dateFormat: 'mm/dd/yy', changeYear: true}
+         f.input :time
+       end
      end
      f.actions
    end
