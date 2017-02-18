@@ -97,7 +97,7 @@ ActiveAdmin.register Treatment,  { :sort_order => :date_desc }  do
 
   filter :athlete, label: 'Name'
   filter :date, label: 'Treatment Date'
-  filter :treatment_location, :as => :select, :collection => Location.all.order("location ASC").map { |a| a.location }
+  #filter :treatment_location, :as => :select, :collection => Location.all.order("location ASC").map { |a| a.location }
   filter :tactions, label: 'Actions', :as => :select, :collection => Taction.order("name ASC").all
   filter :trainer, label: 'Trainer'
 
@@ -107,12 +107,12 @@ ActiveAdmin.register Treatment,  { :sort_order => :date_desc }  do
        f.input :athlete, :collection => Athlete.all.sort_by(&:last_name)
        f.input :trainer, :collection => Hash[Trainer.all.map{|t| [t.last_name + ', ' + t.first_name,t.id]}]
        f.input :treatment_location, :collection => Location.all.order("location ASC").map { |a| a.location }
-       f.has_many :cures, :heading => 'Actions', :new_record => false, :allow_destroy => true do |a|
-        a.input :taction, :heading => 'Action', :collection => Taction.all.order("name ASC")
+       f.has_many :cures, :heading => 'Actions', :allow_destroy => true do |a|
+        a.input :taction, :label => 'Action', :collection => Taction.all.order("name ASC")
         end
        f.input :comment, label: 'Trainer Comments'
        if f.object.new_record?
-         f.input :date, as: :datepicker, datepicker_options: {dateFormat: 'mm/dd/yy', changeYear: true},  :input_html => { :value => Date.today}
+         f.input :date, as: :datepicker, datepicker_options: {dateFormat: 'mm/dd/yy', changeYear: true},  :input_html => { :value => Date.today.strftime("%m/%d/%Y")}
          f.input :time, :input_html => { :value => Time.now.strftime("%I:%M %p")}
        else
          f.input :date, as: :datepicker, datepicker_options: {dateFormat: 'mm/dd/yy', changeYear: true}

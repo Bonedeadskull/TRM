@@ -43,7 +43,7 @@ ActiveAdmin.register Athlete,  { :sort_order => :last_name_asc } do
       end
      end
      panel "Treatments" do
-       table_for athlete.treatments.order("time desc") do |treatment|
+       table_for athlete.treatments.order("time desc"), class: 'athlete' do |treatment|
          column :date
          column('View') do |treatment|
             link_to('View', admin_treatment_path(treatment))
@@ -56,7 +56,7 @@ ActiveAdmin.register Athlete,  { :sort_order => :last_name_asc } do
        end
      end
      panel "Injuries" do
-       table_for athlete.injuries.order("date desc") do |injury|
+       table_for athlete.injuries.order("date desc"), class: 'athlete' do |injury|
          column(:date)
          column('View') do |injury|
             link_to('View', admin_injury_path(injury))
@@ -72,17 +72,21 @@ ActiveAdmin.register Athlete,  { :sort_order => :last_name_asc } do
    filter :first_name_cont, label: 'First Name'
    filter :last_name_cont, label: 'Last Name'
    filter :grade_cont, label: 'Grade', :as => :select, :collection => ['9','10','11','12']
-   filter :sport, label: 'Sport', :as => :select, :collection => ['Football', 'Soccer','Swimming','Tennis','Baseball','Basketball','Softball', 'Wrestling', 'Lacrosse', 'Track', 'Cross Country', 'Volleyball']
+   filter :sport, label: 'Sport', :as => :select, :collection => Sport.all.order("name ASC").map { |s| s.name}
 
    form do |f|
      f.inputs "Treatment Details" do
        f.input :first_name, :required => true
        f.input :last_name, :required => true
-       f.input :dob, :as => :datepicker
+       if f.object.new_record?
+         f.input :date, as: :datepicker, datepicker_options: {dateFormat: 'mm/dd/yy', changeYear: true},  :input_html => { :value => Date.new(2000, 1, 1).strftime("%m/%d/%Y")}
+       else
+         f.input :date, as: :datepicker, datepicker_options: {dateFormat: 'mm/dd/yy', changeYear: true}
+       end
        f.input :grade, :as => :select, :collection => ['9','10','11','12']
        f.input :phone
        f.input :address
-       f.input :sport, :as => :tags, :collection => ['Football', 'Soccer','Swimming','Tennis','Baseball','Basketball','Softball', 'Wrestling', 'Lacrosse', 'Track', 'Cross Country', 'Volleyball']
+       f.input :sport, :as => :tags, :collection => Sport.all.order("name ASC").map { |s| s.name}
      end
      f.actions
    end
