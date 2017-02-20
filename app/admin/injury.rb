@@ -123,16 +123,16 @@ ActiveAdmin.register Injury do
 
   form do |f|
      f.inputs "Injury Details" do
-       f.input :athlete, :collection => Athlete.all.sort_by(&:last_name), hint: link_to('Create Athlete', new_admin_athlete_path)
-       f.input :injury_location, :collection => Location.all.order("location ASC").map { |a| a.location }
+       f.input :athlete, :collection => Athlete.all.sort_by(&:last_name), hint: link_to('Create Athlete', new_admin_athlete_path), :required => true
+       f.input :injury_location, :collection => Location.all.order("location ASC").map { |a| a.location }, :required => true
        f.input :active, :as => :boolean, label: 'Injury Active', :input_html => { :checked => 'true'}
        f.input :status, label: 'Player Status', :as => :select, :collection => ['Hold', 'Limit', 'Full'], include_blank: false
        if f.object.new_record?
-         f.input :date, as: :datepicker, datepicker_options: {dateFormat: 'mm/dd/yy', changeYear: true},  :input_html => { :value => Date.today}
-         f.input :time, :input_html => { :value => Time.now.strftime("%I:%M %p")}
+         f.input :date, as: :datepicker, datepicker_options: { changeYear: true},  :input_html => { :value => Date.today.strftime("%m/%d/%Y")}, :required => true
+         f.input :time, :input_html => { :value => Time.now.strftime("%I:%M %p")}, :required => true
        else
-         f.input :date, as: :datepicker, datepicker_options: {dateFormat: 'mm/dd/yy', changeYear: true}
-         f.input :time
+         f.input :date, as: :datepicker, datepicker_options: { changeYear: true}, :required => true
+         f.input :time, :required => true
        end
        f.input :tcomment, label: 'Message to Trainers'
        f.input :comment, label: 'Message to Coach'

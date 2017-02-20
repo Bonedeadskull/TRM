@@ -22,3 +22,6 @@ en:
   active_admin:
     powered_by: ""
     clone_model: "Duplicate %{model}"
+  date:
+    formats:
+      long: "%m/%d/%Y"

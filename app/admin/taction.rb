@@ -30,7 +30,7 @@ end
 
 form do |f|
   f.inputs "Action Details" do
-    f.input :name
+    f.input :name, :required => true
   end
   f.actions
 end

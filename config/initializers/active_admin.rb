@@ -193,7 +193,6 @@ ActiveAdmin.setup do |config|
   #   config.register_stylesheet 'my_print_stylesheet.css', media: :print
   #
   config.register_javascript 'trm.js'
-
   # == CSV options
   #
   # Set the CSV builder separator
