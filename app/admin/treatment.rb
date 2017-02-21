@@ -7,8 +7,8 @@ ActiveAdmin.register Treatment,  { :sort_order => :date_desc }  do
    column(:athlete_id) { |treatment| treatment.athlete.last_name }
    column(:athlete_id) { |treatment| treatment.athlete.first_name }
    column :treatment_location
-   column :taction do |treatment|
-       treatment.tactions.map { |a| a.name }.join(", ").html_safe
+   column :cures do |treatment|
+       treatment.cures.map { |a| a.taction }.join(", ").html_safe
      end
    column :date
    column :time
@@ -59,7 +59,11 @@ ActiveAdmin.register Treatment,  { :sort_order => :date_desc }  do
   index do
     selectable_column
     column :athlete_id, :sortable => 'athletes.last_name' do |injury|
-      link_to(injury.athlete.last_name + ", " + injury.athlete.first_name, admin_treatment_path(injury))
+      begin
+        link_to(injury.athlete.last_name + ", " + injury.athlete.first_name, admin_treatment_path(injury))
+      rescue
+        "Athlete Not Found"
+      end
     end
     column 'Location', :treatment_location
     column 'Actions', :taction do |treatment|
@@ -69,7 +73,11 @@ ActiveAdmin.register Treatment,  { :sort_order => :date_desc }  do
     column :time
     column :comment
     column 'Trainer' do |treatment|
+      begin
       link_to(treatment.trainer.first_name + ' ' + treatment.trainer.last_name, admin_trainer_path(treatment.trainer))
+      rescue
+        "Trainer Not Found"
+      end
     end
     actions
   end

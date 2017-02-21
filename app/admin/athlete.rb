@@ -79,13 +79,13 @@ ActiveAdmin.register Athlete,  { :sort_order => :last_name_asc } do
        f.input :first_name, :required => true
        f.input :last_name, :required => true
        if f.object.new_record?
-         f.input :date, as: :datepicker, datepicker_options: {dateFormat: 'mm/dd/yy', changeYear: true},  :input_html => { :value => Date.new(2000, 1, 1).strftime("%m/%d/%Y")}
+         f.input :dob, label: "Date of Birth", as: :datepicker, datepicker_options: { dateFormat: "mm/dd/yy", changeYear: true},  :input_html => { :value => Date.new(2000,1,1).strftime("%m/%d/%Y")}, :required => true
        else
-         f.input :date, as: :datepicker, datepicker_options: {dateFormat: 'mm/dd/yy', changeYear: true}
+         f.input :dob, label: "Date of Birth", as: :datepicker, datepicker_options: { dateFormat: "mm/dd/yy", changeYear: true}, :required => true
        end
-       f.input :grade, :as => :select, :collection => ['9','10','11','12']
-       f.input :phone
        f.input :address
+       f.input :phone
+       f.input :grade, :as => :select, :collection => ['9','10','11','12']
        f.input :sport, :as => :tags, :collection => Sport.all.order("name ASC").map { |s| s.name}
      end
      f.actions

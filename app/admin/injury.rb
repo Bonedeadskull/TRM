@@ -85,7 +85,11 @@ ActiveAdmin.register Injury do
   index download_links: [:csv, :xml, :json] do
       selectable_column
       column :athlete_id, :sortable => 'athletes.last_name' do |injury|
-        link_to(injury.athlete.last_name + ", " + injury.athlete.first_name, admin_injury_path(injury))
+        begin
+          link_to(injury.athlete.last_name + ", " + injury.athlete.first_name, admin_treatment_path(injury))
+        rescue
+          "Athlete Not Found"
+        end
       end
       column "Location", :injury_location
       column :status
@@ -128,10 +132,10 @@ ActiveAdmin.register Injury do
        f.input :active, :as => :boolean, label: 'Injury Active', :input_html => { :checked => 'true'}
        f.input :status, label: 'Player Status', :as => :select, :collection => ['Hold', 'Limit', 'Full'], include_blank: false
        if f.object.new_record?
-         f.input :date, as: :datepicker, datepicker_options: { changeYear: true},  :input_html => { :value => Date.today.strftime("%m/%d/%Y")}, :required => true
+         f.input :date, as: :datepicker, datepicker_options: { dateFormat: "mm/dd/yy", changeYear: true},  :input_html => { :value => Date.today.strftime("%m/%d/%Y")}, :required => true
          f.input :time, :input_html => { :value => Time.now.strftime("%I:%M %p")}, :required => true
        else
-         f.input :date, as: :datepicker, datepicker_options: { changeYear: true}, :required => true
+         f.input :date, as: :datepicker, datepicker_options: { dateFormat: "mm/dd/yy", changeYear: true}, :required => true
          f.input :time, :required => true
        end
        f.input :tcomment, label: 'Message to Trainers'

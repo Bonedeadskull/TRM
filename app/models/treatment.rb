@@ -4,6 +4,8 @@ class Treatment < ActiveRecord::Base
   has_many :cures
   has_many :tactions, :through => :cures
   accepts_nested_attributes_for :cures, :allow_destroy => true
+  validates_presence_of :athlete
+  validates_presence_of :trainer
   def clone!
     r = self.dup
     r.date = Date.today.strftime("%m/%d/%Y")

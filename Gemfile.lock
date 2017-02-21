@@ -61,6 +61,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    american_date (1.1.1)
     arbre (1.1.1)
       activesupport (>= 3.0.0)
     arel (6.0.4)
@@ -227,6 +228,7 @@ DEPENDENCIES
   active_admin_import (= 3.0.0.pre)
   activeadmin (~> 1.0.0.pre4)
   activeadmin_addons
+  american_date (~> 1.1, >= 1.1.1)
   byebug
   coffee-rails (~> 4.1.0)
   devise
