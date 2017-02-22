@@ -43,7 +43,7 @@ ActiveAdmin.register Athlete,  { :sort_order => :last_name_asc } do
       end
      end
      panel "Treatments" do
-       table_for athlete.treatments.order("time desc"), class: 'athlete' do |treatment|
+       table_for athlete.treatments.order("time asc"), class: 'athlete' do |treatment|
          column :date
          column('View') do |treatment|
             link_to('View', admin_treatment_path(treatment))
@@ -56,7 +56,7 @@ ActiveAdmin.register Athlete,  { :sort_order => :last_name_asc } do
        end
      end
      panel "Injuries" do
-       table_for athlete.injuries.order("date desc"), class: 'athlete' do |injury|
+       table_for athlete.injuries.order("time asc"), class: 'athlete' do |injury|
          column(:date)
          column('View') do |injury|
             link_to('View', admin_injury_path(injury))
