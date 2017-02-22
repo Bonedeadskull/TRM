@@ -30,7 +30,7 @@ tr:nth-child(even) {background-color: #f2f2f2}
       <td><%= injury.athlete.last_name %>, <%= injury.athlete.first_name %></td>
       <td><%= injury.athlete.sport %></td>
       <td><%= injury.status %></td>
-      <td><%= begin injury.athlete.treatments.order("time asc").first.date.strftime("%m/%d/%Y") rescue "No Treatment Found" end %></td>
+      <td><%= begin injury.athlete.treatments.order("time asc").first.time rescue "No Treatment Found" end %></td>
       <td><%= injury.comment %></td>
     </tr>
   <% end %>
