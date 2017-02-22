@@ -4,12 +4,24 @@ ActiveAdmin.register Treatment,  { :sort_order => :date_desc }  do
   menu priority: 2, label: "Treatments"
 
   csv do
-   column(:athlete_id) { |treatment| treatment.athlete.last_name }
-   column(:athlete_id) { |treatment| treatment.athlete.first_name }
+    column(:athlete_id) do |injury|
+      begin
+        injury.athlete.last_name + ", " + injury.athlete.first_name
+      rescue
+        "Athlete Not Found"
+      end
+    end
    column :treatment_location
    column :cures do |treatment|
-       treatment.cures.map { |a| a.taction }.join(", ").html_safe
+     treatment.cures.map { |a| a.taction }.join(", ").html_safe
+   end
+   column(:trainer_id) do |injury|
+     begin
+       injury.trainer.last_name + ", " + injury.trainer.first_name
+     rescue
+       "Trainer Not Found"
      end
+   end
    column :date
    column :time
    column :comment
@@ -89,7 +101,7 @@ ActiveAdmin.register Treatment,  { :sort_order => :date_desc }  do
         link_to(treatment.trainer.first_name + ' ' + treatment.trainer.last_name, admin_trainer_path(treatment.trainer))
       end
       row :treatment_location
-      row :taction do |treatment|
+      row "Actions", :taction do |treatment|
         treatment.tactions.map { |a| a.name }.join(", ").html_safe
       end
       row :date

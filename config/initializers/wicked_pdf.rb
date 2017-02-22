@@ -12,5 +12,5 @@ if Rails.env.production?
 else
   wkhtmltopdf_path = "/usr/local/bin/wkhtmltopdf"
 end
- 
+
 WickedPdf.config = { exe_path: wkhtmltopdf_path, wkhtmltopdf: wkhtmltopdf_path }

@@ -1,9 +1,11 @@
-var filterStatus = true, filters, table, button;
+var filterStatus = true, filters, table, button, cureButton;
 
 window.onload = function() {
   filters = document.querySelector("#sidebar");
   table = document.querySelector("#main_content");
   button = document.querySelector("#filter_button");
+  cureButton = document.querySelector("a.button.has_many_add");
+  cureButton.innerText = "Add Action";
 }
 
 function toggleFilters() {
