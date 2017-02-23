@@ -82,7 +82,7 @@ ActiveAdmin.register Treatment,  { :sort_order => :date_desc }  do
       treatment.tactions.map { |a| a.name }.join(", ").html_safe
     end
     column :date
-    column :time
+    column :time, :sortable => 'id'
     column :comment
     column 'Trainer' do |treatment|
       begin
