@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.2.6'
-gem 'sqlite3'
+gem 'pg'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'sass-rails', '~> 5.0'
 gem 'activeadmin', '~> 1.0.0.pre4'
