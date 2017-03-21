@@ -98,7 +98,7 @@ ActiveAdmin.register Injury do
       selectable_column
       column :athlete_id, :sortable => 'athletes.last_name' do |injury|
         begin
-          link_to(injury.athlete.last_name + ", " + injury.athlete.first_name, admin_treatment_path(injury))
+          link_to(injury.athlete.last_name + ", " + injury.athlete.first_name, admin_injury_path(injury))
         rescue
           "Athlete Not Found"
         end

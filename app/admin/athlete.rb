@@ -27,6 +27,7 @@ ActiveAdmin.register Athlete,  { :sort_order => :last_name_asc } do
      actions
    end
 
+
    show do
      attributes_table :first_name, :last_name, :dob, :grade, :address, :phone, :sport
      panel "Quick Actions" do
@@ -43,21 +44,23 @@ ActiveAdmin.register Athlete,  { :sort_order => :last_name_asc } do
       end
      end
      panel "Treatments" do
-       table_for athlete.treatments.order("time asc"), class: 'athlete' do |treatment|
+       table_for athlete.treatments.order("id desc"), class: 'athlete' do |treatment|
          column :date
+         column :time
          column('View') do |treatment|
             link_to('View', admin_treatment_path(treatment))
          end
          column :treatment_location
-         column :comment
          column 'Trainer' do |treatment|
            treatment.trainer.first_name + ' ' + treatment.trainer.last_name
          end
+         column :comment
        end
      end
      panel "Injuries" do
-       table_for athlete.injuries.order("time asc"), class: 'athlete' do |injury|
-         column(:date)
+       table_for athlete.injuries.order("id desc"), class: 'athlete' do |injury|
+         column :date
+         column :time
          column('View') do |injury|
             link_to('View', admin_injury_path(injury))
          end
@@ -86,7 +89,7 @@ ActiveAdmin.register Athlete,  { :sort_order => :last_name_asc } do
        f.input :address
        f.input :phone
        f.input :grade, :as => :select, :collection => ['9','10','11','12']
-       f.input :sport, :as => :tags, :collection => Sport.all.order("name ASC").map { |s| s.name}
+       f.input :sport, :as => :tags , :collection => Sport.all.order("name ASC").map { |s| s.name}
      end
      f.actions
    end
