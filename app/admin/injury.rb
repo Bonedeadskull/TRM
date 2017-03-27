@@ -1,6 +1,6 @@
 ActiveAdmin.register Injury do
    menu priority: 3, label: "Injuries"
-   config.sort_order = :id_desc
+   config.sort_order = :created_at_desc
    active_admin_import
    permit_params :first_name, :last_name, :status, :injury_location, :date, :time, :active, :tcomment, :comment, :athlete_id, :injury_id
 
@@ -26,8 +26,8 @@ ActiveAdmin.register Injury do
     column :tcomment
   end
 
-  scope :all
-    scope :active do |injuries|
+  scope :all, default: true
+  scope :active do |injuries|
     injuries.where(active: true)
   end
 

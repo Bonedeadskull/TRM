@@ -9,7 +9,7 @@ class CreateInjuries < ActiveRecord::Migration
       t.text :comment
       t.date :date
       t.string :time
+      t.timestamps
     end
   end
 end
-

@@ -1,6 +1,7 @@
 ActiveAdmin.register Treatment do
   permit_params :athlete_id, :trainer_id, :treatment_location, :comment, :date, :time, cures_attributes: [:id, :name, :treatment_id, :taction_id, :_destroy]
   active_admin_import
+  config.sort_order = :created_at_desc
   menu priority: 2, label: "Treatments"
 
   csv do
