@@ -8,6 +8,8 @@ class CreateAthletes < ActiveRecord::Migration
       t.string :phone
       t.string :address
       t.string :sport
+      t.string :notes
     end
   end
 end
+

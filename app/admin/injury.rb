@@ -26,15 +26,14 @@ ActiveAdmin.register Injury do
     column :tcomment
   end
 
-  scope :all, :default => true
-  scope :active do |injuries|
-  injuries.where(active: true)
- end
+  scope :all
+    scope :active do |injuries|
+    injuries.where(active: true)
+  end
 
   action_item :only => :index do
     link_to "Hide Filters", '#', :onclick => 'toggleFilters()',  :id => 'filter_button'
   end
-
 
    controller do
        def index
@@ -122,7 +121,7 @@ ActiveAdmin.register Injury do
   filter :active
   filter :injury_location, :as => :select, :collection => Location.order("location ASC").all
   show do
-    attributes_table do
+   attributes_table do
       row :athlete
       row :injury_location
       row :active

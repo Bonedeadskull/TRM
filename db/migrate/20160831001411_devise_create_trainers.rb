@@ -45,3 +45,5 @@ class DeviseCreateTrainers < ActiveRecord::Migration
     # add_index :trainers, :unlock_token,         unique: true
   end
 end
+
+

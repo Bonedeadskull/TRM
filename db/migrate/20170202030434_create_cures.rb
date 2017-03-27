@@ -7,3 +7,4 @@ class CreateCures < ActiveRecord::Migration
     end
   end
 end
+

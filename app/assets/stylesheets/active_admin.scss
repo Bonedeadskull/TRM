@@ -8,8 +8,8 @@
 // For example, to change the sidebar width:
 // $sidebar-width: 242px;
 $table-stripe-color: #F3F3F3 !default;
-$current-menu-item-background: #BABABA;
-$hover-menu-item-background: #BABABA;
+$current-menu-item-background: rgb(0,150,0);
+$hover-menu-item-background: rgb(0,150,0);
 $text-color: #323537 !default;
 $link-color: #38678b !default;
 $section-header-text-color: #5E6469 !default;
@@ -70,7 +70,7 @@ a.btn-athlete {
   text-align: center;
   box-sizing: border-box;
 }
-#header {
+#header, body.logged_in #footer {
   background: #006400;
 }
 #title_bar h2 {
@@ -89,4 +89,7 @@ ol.choices-group li.choice{
 }
 .athlete .col {
   width: 10%;
+}
+.header#header li.current a {
+  // color: #111 !important;
 }

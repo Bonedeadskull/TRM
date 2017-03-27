@@ -11,3 +11,4 @@ class CreateTreatments < ActiveRecord::Migration
     end
   end
 end
+

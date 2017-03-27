@@ -17,3 +17,4 @@ class CreateActiveAdminComments < ActiveRecord::Migration
     drop_table :active_admin_comments
   end
 end
+

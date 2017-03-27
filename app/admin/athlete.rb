@@ -1,6 +1,6 @@
 ActiveAdmin.register Athlete,  { :sort_order => :last_name_asc } do
   menu priority: 4, label: "Athletes"
-  permit_params :first_name, :last_name, :dob, :grade, :address, :phone ,:sport, :id
+  permit_params :first_name, :last_name, :dob, :grade, :address, :phone ,:sport, :id, :notes
   active_admin_import
 
   action_item do
@@ -29,7 +29,7 @@ ActiveAdmin.register Athlete,  { :sort_order => :last_name_asc } do
 
 
    show do
-     attributes_table :first_name, :last_name, :dob, :grade, :address, :phone, :sport
+     attributes_table :first_name, :last_name, :dob, :grade, :address, :phone, :sport, :notes
      panel "Quick Actions" do
       div class: 'dash_buttons' do
         if(Injury.where(:athlete_id => athlete.id, :active =>  true).exists?)
@@ -75,7 +75,7 @@ ActiveAdmin.register Athlete,  { :sort_order => :last_name_asc } do
    filter :first_name_cont, label: 'First Name'
    filter :last_name_cont, label: 'Last Name'
    filter :grade_cont, label: 'Grade', :as => :select, :collection => ['9','10','11','12']
-   filter :sport, label: 'Sport', :as => :select, :collection => ->{Sport.all.order("name ASC").map { |s| s.name }}
+   filter :sport, label: 'Sport', :as => :select, :collection => ->{Sport.all.order("name ASC")}
 
    form do |f|
      f.inputs "Treatment Details" do
@@ -89,9 +89,11 @@ ActiveAdmin.register Athlete,  { :sort_order => :last_name_asc } do
        f.input :address
        f.input :phone
        f.input :grade, :as => :select, :collection => ['9','10','11','12']
-       f.input :sport, :as => :tags , :collection => Sport.all.order("name ASC").map { |s| s.name }
+       f.input :sport, :as => :tags , :collection => Sport.all.order("name ASC").map { |s| s.name}
+       f.input :notes
      end
      f.actions
    end
 
   end
+

@@ -7,3 +7,4 @@ class CreateSports < ActiveRecord::Migration
     end
   end
 end
+

@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+
 gem 'rails', '4.2.6'
 gem 'pg'
 gem 'bootstrap-sass', '~> 3.3.6'
@@ -8,7 +9,6 @@ gem 'activeadmin', '~> 1.0.0.pre5'
 gem 'activeadmin_addons'
 gem "active_admin_import" , '3.0.0.pre'
 gem 'devise'
-
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 gem 'american_date', '~> 1.1', '>= 1.1.1'

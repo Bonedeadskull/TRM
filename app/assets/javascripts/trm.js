@@ -4,7 +4,6 @@ window.onload = function() {
   filters = document.querySelector("#sidebar");
   table = document.querySelector("#main_content");
   button = document.querySelector("#filter_button");
-
 }
 
 function toggleFilters() {

@@ -7,3 +7,4 @@ class CreateImpresssions < ActiveRecord::Migration
     end
   end
 end
+
