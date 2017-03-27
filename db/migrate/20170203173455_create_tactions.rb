@@ -1,3 +1,4 @@
+
 class CreateTactions < ActiveRecord::Migration
   def change
     create_table :tactions do |t|
@@ -7,3 +8,4 @@ class CreateTactions < ActiveRecord::Migration
     end
   end
 end
+

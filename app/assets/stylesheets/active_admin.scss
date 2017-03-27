@@ -93,3 +93,8 @@ ol.choices-group li.choice{
 .header#header li.current a {
   // color: #111 !important;
 }
+li.warning {
+  background-color: #ffea00;
+  border-top: 1px solid #333;
+  border-bottom: 1px solid #333;
+}
