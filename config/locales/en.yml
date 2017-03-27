@@ -19,9 +19,23 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  formtastic:
+    :create: 'Create %{model}'
+    :update: 'Update %{model}'
+    :submit: 'Submit %{model}'
+    :cancel: 'Cancel %{model}'
+    :reset: 'Reset %{model}'
   active_admin:
-    powered_by: ""
+    powered_by: "Footer Test"
     clone_model: "Duplicate %{model}"
   date:
     formats:
       long: "%m/%d/%Y"
+  activerecord:
+    models:
+      taction:
+        one: "Action"
+        other: "Actions"
+      cure:
+        one: "Action"
+        other: "Actions"

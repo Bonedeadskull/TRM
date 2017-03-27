@@ -141,6 +141,7 @@ GEM
     rack (1.6.5)
     rack-test (0.6.3)
       rack (>= 1.0)
+    railroady (1.5.2)
     rails (4.2.6)
       actionmailer (= 4.2.6)
       actionpack (= 4.2.6)
@@ -242,6 +243,7 @@ DEPENDENCIES
   jquery-rails
   jquery-ui-rails (~> 5.0.5)
   pg
+  railroady
   rails (= 4.2.6)
   rails_12factor
   sass-rails (~> 5.0)

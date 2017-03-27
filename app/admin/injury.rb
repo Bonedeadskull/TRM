@@ -1,6 +1,6 @@
 ActiveAdmin.register Injury do
    menu priority: 3, label: "Injuries"
-   config.sort_order = "athletes.last_name asc"
+   config.sort_order = :id_desc
    active_admin_import
    permit_params :first_name, :last_name, :status, :injury_location, :date, :time, :active, :tcomment, :comment, :athlete_id, :injury_id
 
@@ -26,9 +26,15 @@ ActiveAdmin.register Injury do
     column :tcomment
   end
 
-  action_item do
+  scope :all
+  scope :active do |injuries|
+  injuries.where(active: true)
+ end
+
+  action_item :only => :index do
     link_to "Hide Filters", '#', :onclick => 'toggleFilters()',  :id => 'filter_button'
   end
+
 
    controller do
        def index
@@ -71,14 +77,6 @@ ActiveAdmin.register Injury do
     end
   end
 
-   controller do
-     before_filter only: :index do
-       if params[:commit].blank? && params[:q].blank?
-         extra_params = {"q" => {"active_eq" => "true"}}
-         params.merge! extra_params
-       end
-     end
-   end
    batch_action :Mark_Inactive do |ids|
      Injury.find(ids).each do |injury|
        injury.active = false
@@ -124,7 +122,16 @@ ActiveAdmin.register Injury do
   filter :active
   filter :injury_location, :as => :select, :collection => Location.order("location ASC").all
   show do
-    attributes_table :athlete, :injury_location, :active, :status, :date, :time, :comment
+    attributes_table do
+      row :athlete
+      row :injury_location
+      row :active
+      row :status
+      row :date
+      row :time
+      row "Comment to Coaches", :comment
+      row "Trainer Comment", :tcomment
+    end
     columns do
       column do
         panel "Quick Actions" do

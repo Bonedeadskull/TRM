@@ -8,6 +8,7 @@ gem 'activeadmin', '~> 1.0.0.pre4'
 gem 'activeadmin_addons'
 gem "active_admin_import" , '3.0.0.pre'
 gem 'devise'
+
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 gem 'american_date', '~> 1.1', '>= 1.1.1'
@@ -41,6 +42,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'railroady'
 end
 
 group :development do
