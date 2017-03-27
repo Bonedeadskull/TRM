@@ -26,7 +26,7 @@ ActiveAdmin.register Injury do
     column :tcomment
   end
 
-  scope :all
+  scope :all, :default => true
   scope :active do |injuries|
   injuries.where(active: true)
  end

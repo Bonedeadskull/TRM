@@ -4,7 +4,7 @@ gem 'rails', '4.2.6'
 gem 'pg'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'sass-rails', '~> 5.0'
-gem 'activeadmin', '~> 1.0.0.pre4'
+gem 'activeadmin', '~> 1.0.0.pre5'
 gem 'activeadmin_addons'
 gem "active_admin_import" , '3.0.0.pre'
 gem 'devise'
@@ -42,7 +42,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-  gem 'railroady'
 end
 
 group :development do

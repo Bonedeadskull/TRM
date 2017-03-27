@@ -26,7 +26,7 @@ en:
     :cancel: 'Cancel %{model}'
     :reset: 'Reset %{model}'
   active_admin:
-    powered_by: "Footer Test"
+    powered_by: ""
     clone_model: "Duplicate %{model}"
   date:
     formats:
